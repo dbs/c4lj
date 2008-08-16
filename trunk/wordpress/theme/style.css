@@ -2,7 +2,7 @@
 Theme Name: c4lj
 Theme URI: http://journal.code4lib.org
 Description: A theme developed for the Code4Lib Journal
-Version: 0.2
+Version: 0.3
 Author: Jonathan Brinley
 Author URI: http://xplus3.net/
 
@@ -18,13 +18,6 @@ body, h1, h2, h3, h4, h5, h6, img, ol, ul, li, p, div {
 
 /* COLORS *****************************************/
 
-body {
-	background-color: #fbfbfb; /* off white */
-}
-
-a:link, a:visited, a:link:hover, a:visited:hover, #header h1 {
-	color: #803030; /* Maroon-ish */
-}
 
 #content h1, #content h2, #commentform label, #content h2.author {
 	color: #000000;
@@ -45,10 +38,12 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	margin: 1em;
+	background-color: #FDFAFA;
 }
 
 a:link, a:visited {
 	text-decoration: none;
+	color: #803030;
 }
 
 a:link:hover, a:visited:hover {
@@ -65,23 +60,30 @@ li {
 	padding: .1em 0;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 #page {
 	position: relative;
-	min-width: 850px;
+	min-width: 700px;
+  max-width: 1280px;
 }
 
 /* HEADER *********************************/
 #header {
 	width: 100%;
-	/* height: 4em; */
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
 	margin-bottom: 0.5em;
 }
 
 #header h1 {
 	font-size: 250%;
-	margin: .4em 0 0;
+	margin: .4em 0 -.4em;
+	color: #803030;
+}
+#header h1 a {
+  position: relative;
+  z-index: 110;
 }
 
 #header h1 a:hover {
@@ -89,65 +91,82 @@ li {
 }
 
 #header h2 {
-	text-align: right;
 	font-size: 100%;
-	margin: -1em 0 .4em 0;
+	margin: 1em 0 0.5em 0.6em;
 }
 
 /* SIDEBARS ***************************************/
 
-#meta, #archives {
+#meta {
 	/* position: absolute;
 	top: 4.5em; */
 	width: 15%;
-	position: relative;
 }
 
 #meta {
 	float: left;
+	clear: left;
+  margin-top: 2em;
+  margin-left: 0.6em;
 }
 
-#meta h2, #archives h2 {
+#meta h2 {
 	margin: .1em 0;
 	font-size: 125%;
 }
 
-#meta ul, #archives ul {
+#meta #about h2 {
+	display: none;
+}
+
+#meta ul {
 	margin-top: .1em;
 }
 
 #about {
-	margin-top: .2em;
+	position: absolute;
+	top: 0;
+	left: 0;
+  text-align: right;
+  margin: 0.2em 5% 0 16%;
+  padding: 0 3em;
+  min-width: 48em; /* don't overlap with header */
+  max-width: 700px;
+	color: black;
+	line-height: 150%;
+	z-index: 100;
+}
+#about a {
+	color: black;
+  text-decoration: underline;
+}
+#about a:hover {
+  color: #803030;
 }
 
 #about ul {
+	float: right;
+	margin: 0;
+}
+
+#about ul li{
+	float: left;
+	padding-left: 2em;
 }
 
 #forauthors {
 	padding-top: .75em;
 }
 
-#forauthors ul {
-}
-
-#archives {
-	float: right;
-	text-align: right;
-}
-
-#archives ul {
-}
-
-#archives #searchform div {
-	text-align: right;
+#searchform div {
 	margin-bottom: 1.75em;
 }
 
-#archives #searchform #s {
+#searchform #s {
 	width: 95%;
 }
 
-#archives #searchform #searchsubmit {
+#searchform #searchsubmit {
 	background-color: #ffffff;
 	color: #803030;
 	font-size: 1.25em;
@@ -158,21 +177,22 @@ li {
 /* PAGE BODY **************************************/
 
 #content {
-	border-width: 0 1px;
-	border-style: none solid;
 	position: relative;
-	/* left: 16%; */
-	width: 66%;
-	min-width: 550px;
+	min-width: 400px;
+  max-width: 700px;
 	min-height: 300px;
-	padding: 0 1%;
-	margin: 0 16%;
+	padding: 0 3em 2em;
+	margin: 0 5% 0 16%;
 }
 
 #content h1 {
-	margin: 0 0 .1em 0;
+	margin: 0.25em 0 .1em;
+  padding-top: 0.5em;
+  padding-right: 40%;
+  border-top: 3px solid #803030;
 	font-size: 200%;
 	font-weight: bold;
+  color: #803030;
 }
 
 #content h2 {
@@ -235,13 +255,15 @@ li {
 	padding-left: 2em;
 }
 
-#content p.editlink {
-	margin-bottom: 0;
+#content .entry {
+	margin: 2em 0 0 5px;
+	font-size: 1.2em;
 }
 
-#content .entry {
-	margin: 2em 3em 0;
-	font-size: 1.2em;
+.entry #byline {
+  margin-left: -5px;
+  font-weight: bold;
+  font-size: 115%;
 }
 
 #content .entry p, #content .entry li {
@@ -264,10 +286,11 @@ li {
 /* ARTICLES ********************************/
 
 #content .abstract {
-	margin: 0 7em;
+  width: 60%;
 	font-style: italic;
 	line-height: 1.25em;
 	font-size: 1.1em;
+  text-align: justify;
 }
 
 #content .abstract em {
@@ -278,44 +301,30 @@ li {
 	margin-bottom: 3em;
 }
 
+#content .entry h2, #content .entry h3, #content .entry h4, #content .entry h5, #content .entry h6 {
+  margin-left: -5px;
+  margin-top: 1em;
+}
 #content .entry h2 {
 	margin-top: 2em;
-	text-indent: -1.5em;
+  border-bottom: 3px solid #000000;
 }
-
 #content .entry h3 {
 	margin-top: 1.5em;
-	text-indent: -0.75em;
-}
-
-#content .entry h4 {
-	margin-top: 1em;
-	text-indent: -0.5em;
-}
-
-#content .entry h5 {
-	margin-top: 1em;
-	text-indent: -0.25em;
-}
-
-#content .entry h6 {
-	margin-top: 1.em;
-	text-indent: -0.125em;
 }
 
 #content .article .entry h2.abouttheauthor {
-	border-top-style: solid;
-	border-top-width: 1px;
-	margin-left: -1.5em;
-	text-indent: 0;
-	margin-top: 1em;
-	padding-top: 1em;
-	width: 50%;
+  margin-top: 3em;
+}
+
+#content .editlink {
+  float: left;
+  margin: 0;
 }
 
 .article #issueDesignation {
 	text-align: right;
-	margin: 0 3em;
+  margin-bottom: 0.5em;
 }
 
 #content .sidebar {
@@ -337,53 +346,47 @@ li {
 
 /* CATEGORIES ******************************/
 
+#content.listpage h1.pagetitle {
+  margin-top: -0.75em;
+  border-bottom: 3px solid #803030;
+  border-top: 0px solid transparent;
+}
+
 #content.listpage .article .articletitle {
 	padding-top: 1em;
-	margin: 0 3em;
+	margin:0;
 }
 #content.listpage .article .abstract {
 	font-style: normal;
+  margin: 0 1em;
+  width: auto;
 }
 #content.listpage .article .abstract em {
 	font-style: italic;
 }
 #content.listpage .article .author {
-	margin: 0.5em 6em;
+	margin: 0.5em 1em;
 	font-style: normal;
 	font-weight: bold;
 	line-height: 1.25em;
 	font-size: 1.1em;
 }
 
-/* I DON'T KNOW ****************************/
-
-/*
-div.article {
-	width: 80%;
-}
-
-div.article h3 {
-	padding-left: 1.5em;
-}
-
-div.article p {
-	padding-left: 3.5em;
-} */
 
 /* COMMENTS *****************************/
-ol.commentlist {
+#content ol.commentlist {
 	margin: 1em 0;
-	padding: 0 4em;
+	padding: 0 1.75em;
 }
 
-ol.commentlist li {
+#content ol.commentlist li {
 	padding: 1em;
 }
 
-ol.commentlist li cite {
+#content ol.commentlist li cite {
 	font-style: normal;
 }
-ol.commentlist li .commentmetadata {
+#content ol.commentlist li .commentmetadata {
 	font-size: 75%;
 }
 
@@ -400,22 +403,31 @@ ol.commentlist li .commentmetadata {
 div#footer {
 	position: relative; 
 	clear: both;
-	width: 100%;
-	border-top-style: solid;
-	border-top-width: 1px;
-	margin-top: 0.5em;
-	padding-top: 0.4em;
+  margin: 0.5em 5% 0 16%;
+  padding-left: 3em;
+  padding-right: 3em;
+  max-width: 700px;
+  min-width: 400px;
 }
 
 div#footer p#login {
-	width: 50%;
+  float: left;
+  padding-top: 10px;
 	text-align: left;
 }
 
 div#footer p#copyright {
-	width: 50%;
 	text-align: right;
-	position: absolute;
-	right: 0;
-	top: 0.4em;
+  padding-top: 7px;
+	border-top: 3px solid #803030;
+}
+
+/* Syntax Highlighter *******************/
+.geshi ol {
+  margin-left: 0 !important;
+}
+
+.geshi li {
+  margin-top: 0 !important;
+  line-height: 1 !important;
 }
