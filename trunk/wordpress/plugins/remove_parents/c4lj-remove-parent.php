@@ -4,7 +4,7 @@ Plugin Name: C4LJ Remove Parents
 Plugin URI: http://wordpress.org/#
 Description: Remove parent directories & "category" from category permalinks.
 Author: Jonathan Brinley
-Version: 0.1
+Version: 0.2
 Author URI: http://xplus3.net/
 */
 /*
@@ -29,13 +29,13 @@ Author URI: http://xplus3.net/
 */
 function kill_parent_cats($namedcatpath) {
 	$result = $namedcatpath;
-	$bloghome = get_bloginfo( 'home' );
+	$bloghome = get_bloginfo('url');
 	$catbase = get_category_base();
 	
 	//removing parent cats
-	//domain/$catbase/parent_category/subcat
-	if (preg_match('%' . $bloghome . $catbase . '/.*/(.*?)$%i', $namedcatpath)) {
-		$result =  preg_replace('%' . $bloghome . $catbase . '/.*/(.*?)$%i', $bloghome . $catbase . '/$1', $namedcatpath);
+	//http://example.com/$catbase/parent_category/subcat
+	if (preg_match('%' . $bloghome . "/" . $catbase . '/.*/(.*?)$%i', $namedcatpath)) {
+		$result =  preg_replace('%' . $bloghome . "/" . $catbase . '/.*/(.*?)$%i', $bloghome . "/" . $catbase . '/$1', $namedcatpath);
 	}
 	return $result;	
 }
