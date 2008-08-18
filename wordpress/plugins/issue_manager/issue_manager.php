@@ -19,7 +19,9 @@ function issue_manager_admin(  ) {
     $cat_ID = (int)$cat_ID;
     switch($action) {
       case "publish":
-        include_once('im_admin_publish.php');
+        if ( !in_array($cat_ID, $published) ) {
+          include_once('im_admin_publish.php');
+        }
         break;
       case "unpublish":
         issue_manager_unpublish($cat_ID);
