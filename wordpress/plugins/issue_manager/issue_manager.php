@@ -74,7 +74,7 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
     
     $posts = get_posts( "numberposts=-1&category=$cat_ID" );
     foreach ( $posts as $post ) {
-      if ( "private" == $post->post_status ) {
+      if ( "pending" == $post->post_status ) {
         $publish_now = TRUE;
         foreach ( get_the_category($post->ID) as $cat ) {
           if ( in_array( $cat->cat_ID, $unpublished ) ) {
@@ -85,7 +85,7 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
         if ( $publish_now ) {
           wp_update_post( array(
             'ID' => $post->ID,
-            'post_status' => 'private',
+            'post_status' => 'publish',
             'post_date' => date("Y-m-d H:i:s")
           ) );
         }
@@ -110,7 +110,7 @@ function issue_manager_unpublish( $cat_ID, &$published, &$unpublished ) {
       if ( "publish" == $post->post_status || "future" == $post->post_status ) {
         wp_update_post( array(
           'ID' => $post->ID,
-          'post_status' => 'private'
+          'post_status' => 'pending'
         ) );
       }
     }
