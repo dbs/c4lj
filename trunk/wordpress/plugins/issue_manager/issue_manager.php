@@ -60,8 +60,8 @@ function issue_manager_unpublish($cat_ID) {
     foreach ( $posts as $post ) {
       if ( "publish" == $post->post_status || "future" == $post->post_status ) {
         wp_update_post( array(
-          ['ID'] => $post->ID,
-          ['post_status'] => 'draft'
+          'ID' => $post->ID,
+          'post_status' => 'draft'
         ) );
       }
     }
