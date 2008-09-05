@@ -75,6 +75,8 @@ function issue_manager_uninstall(  ) {
   
 }
 
-add_management_page( 'Manage Issues', 'Issues', 'publish_posts', __FILE__, 'issue_manager_admin' );
+if ( function_exists('add_management_page') ) {
+  add_management_page( 'Manage Issues', 'Issues', 'publish_posts', __FILE__, 'issue_manager_admin' );
+}
 //register_activation_hook(__FILE__, 'issue_manager_install');
 //register_deactivation_hook(__FILE__, 'issue_manager_uninstall');
