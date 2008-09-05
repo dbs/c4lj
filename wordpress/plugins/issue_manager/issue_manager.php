@@ -15,7 +15,6 @@ function issue_manager_manage_page(  ) {
   }
 }
 function issue_manager_admin(  ) {
-  echo '<h2>Testing</h2>';
   $published = get_option( 'im_published_categories' );
   $unpublished = get_option( 'im_unpublished_categories' );
   $categories = get_categories( 'orderby=name&hierarchical=0' );
@@ -49,6 +48,8 @@ function issue_manager_admin(  ) {
         //include_once('im_admin_main.php');
         break;
     }
+  } else {
+    issue_manager_admin_main();
   }
 }
 
