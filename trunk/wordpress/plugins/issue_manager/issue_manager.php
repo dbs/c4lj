@@ -7,7 +7,7 @@ Version: 0.1
 Author: Jonathan Brinley
 Author URI: http://xplus3.net/
 */
-require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+require_once(ABSPATH . 'wp-admin/includes/admin.php');
 
 $issue_manager_db_version = "0.1";
 function issue_manager_admin(  ) {
