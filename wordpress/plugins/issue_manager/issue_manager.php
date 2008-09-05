@@ -15,9 +15,9 @@ function issue_manager_manage_page(  ) {
   }
 }
 function issue_manager_admin(  ) {
-  $published = (array) get_option( 'im_published_categories' );
-  $unpublished = (array) get_option( 'im_unpublished_categories' );
-  $categories = (array) get_categories( 'orderby=name&hierarchical=0&hide_empty=0' );
+  $published = get_option( 'im_published_categories' );
+  $unpublished = get_option( 'im_unpublished_categories' );
+  $categories = get_categories( 'orderby=name&hierarchical=0&hide_empty=0' );
   
   $cat_ID = isset($_GET['cat_ID'])?$_GET['cat_ID']:null;
   $action = isset($_GET['action'])?$_GET['action']:null;
