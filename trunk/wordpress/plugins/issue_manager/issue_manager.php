@@ -19,7 +19,7 @@ function issue_manager_admin(  ) {
   $unpublished = (array) get_option( 'im_unpublished_categories' );
   $categories = (array) get_categories( 'orderby=name&hierarchical=0' );
   
-  echo '<pre style="color: red;">';
+  echo '<pre style="background-color: #CCCCCC;">';
   var_dump($published);
   var_dump($unpublished);
   var_dump($categories);
