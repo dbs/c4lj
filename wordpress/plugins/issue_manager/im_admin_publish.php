@@ -14,9 +14,8 @@
     <thead>
       <tr>
         <th scope="col">Post Name</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
+        <th scope="col">Author</th>
+        <th scope="col">Order</th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +25,8 @@
       foreach ( $posts as $post ):?>
         <tr id="post-<?php echo $post->ID; ?>"<?php echo $alt; ?>>
           <td><?php echo $post->post_title; ?></td>
+          <td><?php the_author(); ?></td>
+          <td><input type="text" width="3" name="order-<?php echo $post->ID; ?>" value="0" /></td>
         </tr>
         <?php $alt = empty( $alt ) ? ' class="alternate"' : ''; ?>
       <?php endforeach;
