@@ -19,11 +19,6 @@ function issue_manager_admin(  ) {
   $unpublished = (array) get_option( 'im_unpublished_categories' );
   $categories = (array) get_categories( 'orderby=name&hierarchical=0' );
   
-  echo '<p style="color: red;">'.$_GET['cat_ID'].', '.$_GET['action'].'</p>';
-  $cat_ID = isset($_GET['cat_ID'])?$_GET['cat_ID']:null;
-  $action = isset($_GET['action'])?$_GET['action']:null;
-  echo '<p style="color: red;">'.$cat_ID.', '.$action.'</p>';
-  
   $cat_ID = isset($_GET['cat_ID'])?$_GET['cat_ID']:null;
   $action = isset($_GET['action'])?$_GET['action']:null;
     
