@@ -9,6 +9,11 @@ Author URI: http://xplus3.net/
 */
 
 $issue_manager_db_version = "0.1";
+function issue_manager_manage_page(  ) {
+  if ( function_exists('add_management_page') ) {
+    add_management_page( 'Manage Issues', 'Issues', 'publish_posts', __FILE__, 'issue_manager_admin' );
+  }
+}
 function issue_manager_admin(  ) {
   $published = get_option( 'im_published_categories' );
   $unpublished = get_option( 'im_unpublished_categories' );
@@ -75,8 +80,6 @@ function issue_manager_uninstall(  ) {
   
 }
 
-if ( function_exists('add_management_page') ) {
-  add_management_page( 'Manage Issues', 'Issues', 'publish_posts', __FILE__, 'issue_manager_admin' );
-}
+add_action('admin_menu', 'issue_manager_manage_page');
 //register_activation_hook(__FILE__, 'issue_manager_install');
 //register_deactivation_hook(__FILE__, 'issue_manager_uninstall');
