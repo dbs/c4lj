@@ -20,8 +20,13 @@ function issue_manager_admin(  ) {
   $categories = (array) get_categories( 'orderby=name&hierarchical=0' );
   
   echo '<p style="color: red;">'.$_GET['cat_ID'].', '.$_GET['action'].'</p>';
-  wp_reset_vars(array('action', 'cat_ID'));
+  $cat_ID = isset($_GET['cat_ID'])?$_GET['cat_ID']:null;
+  $action = isset($_GET['action'])?$_GET['action']:null;
   echo '<p style="color: red;">'.$cat_ID.', '.$action.'</p>';
+  
+  $cat_ID = isset($_GET['cat_ID'])?$_GET['cat_ID']:null;
+  $action = isset($_GET['action'])?$_GET['action']:null;
+    
   if ( $cat_ID ) {
     $cat_ID = (int)$cat_ID;
     switch($action) {
