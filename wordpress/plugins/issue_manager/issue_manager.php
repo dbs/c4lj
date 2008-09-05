@@ -21,7 +21,7 @@ function issue_manager_admin(  ) {
   
   echo '<p style="color: red;">'.$_GET['cat_ID'].'</p>';
   wp_reset_vars(array('action', 'cat_ID'));
-  echo '<p style="color: red;">'.$cat_ID.'</p>';
+  echo '<p style="color: red;">'.$action.'</p>';
   if ( $cat_ID ) {
     $cat_ID = (int)$cat_ID;
     switch($action) {
