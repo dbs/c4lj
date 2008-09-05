@@ -25,15 +25,15 @@
         <td><strong><a title='Edit the status of "<?php echo $cat->cat_name; ?>"' href="?action=edit&cat_ID=<?php echo $cat->cat_ID; ?>"><?php echo $cat->cat_name; ?></a></strong></td>
         <td><?php
           if ( "published" == $status ) { echo "Published"; }
-          else { echo "<a href='?action=publish&cat_ID=$cat->cat_ID'>Publish</a>"; }
+          else { echo "<a href='?page=manage-issues&action=publish&cat_ID=$cat->cat_ID'>Publish</a>"; }
         ?></td>
         <td><?php
           if ( "unpublished" == $status ) { echo "Unpublished"; }
-          else { echo "<a href='?action=unpublish&cat_ID=$cat->cat_ID'>Unpublish</a>"; }
+          else { echo "<a href='?page=manage-issues&action=unpublish&cat_ID=$cat->cat_ID'>Unpublish</a>"; }
         ?></td>
         <td><?php
           if ( "ignored" == $status ) { echo "Ignored"; }
-          else { echo "<a href='?action=ignore&cat_ID=$cat->cat_ID'>Ignore</a>"; }
+          else { echo "<a href='?page=manage-issues&action=ignore&cat_ID=$cat->cat_ID'>Ignore</a>"; }
         ?></td>
       </tr>
       <?php $alt = empty( $alt ) ? ' class="alternate"' : ''; ?>
