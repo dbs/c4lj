@@ -15,10 +15,9 @@ function issue_manager_manage_page(  ) {
   }
 }
 function issue_manager_admin(  ) {
-  $published = get_option( 'im_published_categories' );
-  $unpublished = get_option( 'im_unpublished_categories' );
-  $categories = get_categories( 'orderby=name&hierarchical=0' );
-  echo $published; echo $unpublished; echo $categories;
+  $published = (array) get_option( 'im_published_categories' );
+  $unpublished = (array) get_option( 'im_unpublished_categories' );
+  $categories = (array) get_categories( 'orderby=name&hierarchical=0' );
   
   wp_reset_vars(array('action', 'cat_ID'));
   if ( $cat_ID ) {
