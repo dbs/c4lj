@@ -68,7 +68,7 @@ function issue_manager_admin(  ) {
   echo '</div>';
 }
 
-function issue_manager_unpublish($cat_ID, $published, $unpublished) {
+function issue_manager_unpublish($cat_ID, &$published, &$unpublished) {
   $key = array_search($cat_ID, $published);
   if ( FALSE !== $key ) {
     array_splice($published, $key, 1);
