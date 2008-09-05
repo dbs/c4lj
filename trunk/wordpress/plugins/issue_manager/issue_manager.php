@@ -29,15 +29,10 @@ function issue_manager_admin(  ) {
     $cat_ID = (int)$cat_ID;
     switch($action) {
       case "publish":
-        if ( !in_array($cat_ID, $published) ) {
-          include_once('im_admin_publish.php');
-        } else {
-          include_once('im_admin_main.php');
-        }
+        issue_manager_publish($cat_ID, $published, $unpublished);
         break;
       case "unpublish":
         issue_manager_unpublish($cat_ID, $published, $unpublished);
-        include_once('im_admin_main.php');
         break;
       case "ignore":
         $key = array_search($cat_ID, $published);
@@ -50,15 +45,13 @@ function issue_manager_admin(  ) {
           array_splice($unpublished, $key, 1);
           update_option( 'im_unpublished_categories', $unpublished );
         }
-        include_once('im_admin_main.php');
         break;
       default:
-        include_once('im_admin_main.php');
         break;
     }
-  } else {
-    include_once('im_admin_main.php');
   }
+  include_once('im_admin_main.php');
+  
   echo '<div class="debug">';
   echo '<pre style="background-color: #CCCCCC;">';
   var_dump($published);
