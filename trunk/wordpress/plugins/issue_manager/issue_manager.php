@@ -21,15 +21,19 @@ function issue_manager_admin(  ) {
   
   wp_reset_vars(array('action', 'cat_ID'));
   if ( $cat_ID ) {
+    echo $cat_ID;
     $cat_ID = (int)$cat_ID;
     switch($action) {
       case "publish":
         if ( !in_array($cat_ID, $published) ) {
           include_once('im_admin_publish.php');
+        } else {
+          include_once('im_admin_main.php');
         }
         break;
       case "unpublish":
         issue_manager_unpublish($cat_ID);
+        include_once('im_admin_main.php');
         break;
       case "ignore":
         $key = array_search($cat_ID, $published);
@@ -42,6 +46,7 @@ function issue_manager_admin(  ) {
           array_splice($unpublished, $key, 1);
           update_option( 'im_unpublished_categories', $unpublished );
         }
+        include_once('im_admin_main.php');
         break;
       default:
         include_once('im_admin_main.php');
