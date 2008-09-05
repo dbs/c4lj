@@ -21,6 +21,11 @@ function issue_manager_admin(  ) {
   
   $cat_ID = isset($_GET['cat_ID'])?$_GET['cat_ID']:null;
   $action = isset($_GET['action'])?$_GET['action']:null;
+  echo '<pre style="background-color: #CCCCCC;">';
+  var_dump($published);
+  var_dump($unpublished);
+  var_dump($categories);
+  echo '</pre>';
     
   if ( $cat_ID ) {
     $cat_ID = (int)$cat_ID;
@@ -59,11 +64,6 @@ function issue_manager_admin(  ) {
 }
 
 function issue_manager_unpublish($cat_ID, $published, $unpublished) {
-  echo '<pre style="background-color: #CCCCCC;">';
-  var_dump($published);
-  var_dump($unpublished);
-  //var_dump($categories);
-  echo '</pre>';
   $key = array_search($cat_ID, $published);
   if ( FALSE !== $key ) {
     array_splice($published, $key, 1);
