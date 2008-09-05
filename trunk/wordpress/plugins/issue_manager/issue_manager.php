@@ -33,7 +33,7 @@ function issue_manager_admin(  ) {
         }
         break;
       case "unpublish":
-        issue_manager_unpublish($cat_ID);
+        issue_manager_unpublish($cat_ID, $published, $unpublished);
         include_once('im_admin_main.php');
         break;
       case "ignore":
@@ -58,11 +58,11 @@ function issue_manager_admin(  ) {
   }
 }
 
-function issue_manager_unpublish($cat_ID) {
+function issue_manager_unpublish($cat_ID, $published, $unpublished) {
   echo '<pre style="background-color: #CCCCCC;">';
   var_dump($published);
   var_dump($unpublished);
-  var_dump($categories);
+  //var_dump($categories);
   echo '</pre>';
   $key = array_search($cat_ID, $published);
   if ( FALSE !== $key ) {
