@@ -44,12 +44,11 @@ function issue_manager_admin(  ) {
         }
         break;
       default:
-        issue_manager_admin_main();
-        //include_once('im_admin_main.php');
+        include_once('im_admin_main.php');
         break;
     }
   } else {
-    issue_manager_admin_main();
+    include_once('im_admin_main.php');
   }
 }
 
