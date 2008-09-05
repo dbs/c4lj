@@ -19,6 +19,9 @@ function issue_manager_admin(  ) {
   $unpublished = get_option( 'im_unpublished_categories' );
   $categories = get_categories( 'orderby=name&hierarchical=0&hide_empty=0' );
   
+  if ( $published === FALSE ) { $published = array(); update_option( 'im_published_categories', $published ); }
+  if ( $unpublished === FALSE ) { $unpublished = array(); update_option( 'im_unpublished_categories', $unpublished ); }
+  
   $cat_ID = isset($_GET['cat_ID'])?$_GET['cat_ID']:null;
   $action = isset($_GET['action'])?$_GET['action']:null;
     
