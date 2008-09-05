@@ -17,7 +17,7 @@ function issue_manager_manage_page(  ) {
 function issue_manager_admin(  ) {
   $published = (array) get_option( 'im_published_categories' );
   $unpublished = (array) get_option( 'im_unpublished_categories' );
-  $categories = (array) get_categories( 'orderby=name&hierarchical=0' );
+  $categories = (array) get_categories( 'orderby=name&hierarchical=0&hide_empty=false' );
   
   echo '<pre style="background-color: #CCCCCC;">';
   var_dump($published);
