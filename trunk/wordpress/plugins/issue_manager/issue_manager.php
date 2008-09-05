@@ -19,7 +19,7 @@ function issue_manager_admin(  ) {
   $unpublished = (array) get_option( 'im_unpublished_categories' );
   $categories = (array) get_categories( 'orderby=name&hierarchical=0' );
   
-  echo '<p style="color: red;">'.$cat_ID.'</p>';
+  echo '<p style="color: red;">'.$_GET['cat_ID'].'</p>';
   wp_reset_vars(array('action', 'cat_ID'));
   echo '<p style="color: red;">'.$cat_ID.'</p>';
   if ( $cat_ID ) {
