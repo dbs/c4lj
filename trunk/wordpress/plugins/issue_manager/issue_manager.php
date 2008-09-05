@@ -68,23 +68,56 @@ function issue_manager_admin(  ) {
   echo '</div>';
 }
 
-function issue_manager_unpublish($cat_ID, &$published, &$unpublished) {
-  $key = array_search($cat_ID, $published);
+function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
+  $key = array_search( $cat_ID, $unpublished );
   if ( FALSE !== $key ) {
-    array_splice($published, $key, 1);
+    array_splice( $unpublished, $key, 1 );
+    update_option( 'im_unpublished_categories', $unpublished );
+  }
+  if ( !in_array( $cat_ID, $published ) ) {
+    $published[] = $cat_ID;
+    sort($published);
+    update_option( 'im_published_categories', $published );
+    
+    $posts = get_posts( "numberposts=-1&category=$cat_ID" );
+    foreach ( $posts as $post ) {
+      if ( "private" == $post->post_status ) {
+        $publish_now = TRUE;
+        foreach ( get_the_category($post->ID) as $cat ) {
+          if ( in_array( $cat->cat_ID, $unpublished ) ) {
+            $publish_now = FALSE;
+            break;
+          }
+        }
+        if ( $publish_now ) {
+          wp_update_post( array(
+            'ID' => $post->ID,
+            'post_status' => 'private',
+            'post_date' => date("Y-m-d H:i:s")
+          ) );
+        }
+      }
+    }
+  }
+}
+
+function issue_manager_unpublish( $cat_ID, &$published, &$unpublished ) {
+  $key = array_search( $cat_ID, $published );
+  if ( FALSE !== $key ) {
+    array_splice( $published, $key, 1 );
     update_option( 'im_published_categories', $published );
   }
-  if ( !in_array($cat_ID, $unpublished) ) {
+  if ( !in_array( $cat_ID, $unpublished ) ) {
     $unpublished[] = $cat_ID;
-    sort($unpublished);
+    sort( $unpublished );
     update_option( 'im_unpublished_categories', $unpublished );
     
-    $posts = get_posts("numberposts=-1&category=$cat_ID");
+    $posts = get_posts( "numberposts=-1&category=$cat_ID" );
     foreach ( $posts as $post ) {
       if ( "publish" == $post->post_status || "future" == $post->post_status ) {
         wp_update_post( array(
           'ID' => $post->ID,
-          'post_status' => 'draft'
+          'post_status' => 'private'
         ) );
       }
     }
