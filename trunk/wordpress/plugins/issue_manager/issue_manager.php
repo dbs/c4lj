@@ -19,11 +19,6 @@ function issue_manager_admin(  ) {
   $unpublished = (array) get_option( 'im_unpublished_categories' );
   $categories = (array) get_categories( 'orderby=name&hierarchical=0&hide_empty=false' );
   
-  echo '<pre style="background-color: #CCCCCC;">';
-  var_dump($published);
-  var_dump($unpublished);
-  var_dump($categories);
-  echo '</pre>';
   $cat_ID = isset($_GET['cat_ID'])?$_GET['cat_ID']:null;
   $action = isset($_GET['action'])?$_GET['action']:null;
     
@@ -64,6 +59,11 @@ function issue_manager_admin(  ) {
 }
 
 function issue_manager_unpublish($cat_ID) {
+  echo '<pre style="background-color: #CCCCCC;">';
+  var_dump($published);
+  var_dump($unpublished);
+  var_dump($categories);
+  echo '</pre>';
   $key = array_search($cat_ID, $published);
   if ( FALSE !== $key ) {
     array_splice($published, $key, 1);
