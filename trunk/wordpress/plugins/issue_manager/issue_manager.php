@@ -9,6 +9,14 @@ Author URI: http://xplus3.net/
 */
 
 $issue_manager_db_version = "0.1";
+function issue_manager_debug( $debug ) {
+  echo '<div class="debug">';
+  echo '<pre style="background-color: #CCCCCC;">';
+  var_dump($debug);
+  echo '</pre>';
+  echo '</div>';
+}
+  
 function issue_manager_manage_page(  ) {
   if ( function_exists('add_management_page') ) {
     add_management_page( 'Manage Issues', 'Issues', 'publish_posts', 'manage-issues', 'issue_manager_admin' );
@@ -52,13 +60,9 @@ function issue_manager_admin(  ) {
   }
   include_once('im_admin_main.php');
   
-  echo '<div class="debug">';
-  echo '<pre style="background-color: #CCCCCC;">';
-  var_dump($published);
-  var_dump($unpublished);
-  var_dump($categories);
-  echo '</pre>';
-  echo '</div>';
+  issue_manager_debug($published);
+  issue_manager_debug($unpublished);
+  issue_manager_debug($categories);
 }
 
 function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
@@ -73,6 +77,7 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
     update_option( 'im_published_categories', $published );
     
     $posts = get_posts( "numberposts=-1&category=$cat_ID" );
+    issue_manager_debug($posts);
     foreach ( $posts as $post ) {
       if ( "pending" == $post->post_status ) {
         $publish_now = TRUE;
