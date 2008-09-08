@@ -11,7 +11,7 @@ function c4lj_current_issue() {
     }
   }
 }
-function c4lj_current_issue_id() {
+function c4lj_current_issue_cat() {
   $issue_parent = get_category_by_slug('issues');
   $categories = get_categories( "child_of=$issue_parent->cat_ID&orderby=ID&order=desc&hierarchical=0" );
   
@@ -19,7 +19,7 @@ function c4lj_current_issue_id() {
   
   foreach ( $categories as $cat ) {
     if ( in_array( $cat->cat_ID, $published ) ) {
-      return $cat->cat_ID;
+      return $cat;
     }
   }
 }
