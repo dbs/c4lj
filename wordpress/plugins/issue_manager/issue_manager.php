@@ -73,12 +73,14 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
     update_option( 'im_published_categories', $published );
     
     $posts = get_posts( "numberposts=-1&post_status=pending&category=$cat_ID" );
+    $counter = 0;
     foreach ( $posts as $post ) {
       wp_update_post( array(
         'ID' => $post->ID,
-        'post_date' => current_time('mysql')
+        'post_date' => date( 'Y-m-d H:i:s', current_time('timestamp')-$counter )
       ) );
       wp_publish_post($post->ID);
+      $counter++;
     }
   }
 }
