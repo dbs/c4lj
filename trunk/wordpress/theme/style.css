@@ -170,10 +170,10 @@ table {
 	font-weight: bold;
 }
 
-#searchform, #archives, #forauthors {
+/*#searchform, #archives, #forauthors {
   position: relative;
 	z-index: 90;
-}
+}*/
 
 
 /* PAGE BODY **************************************/
