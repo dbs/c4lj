@@ -67,7 +67,7 @@ table {
 #page {
 	position: relative;
 	min-width: 700px;
-  max-width: 1280px;
+  max-width: 84em;
 }
 
 /* HEADER *********************************/
@@ -126,12 +126,12 @@ table {
 #about {
 	position: absolute;
 	top: 0;
-	left: 0;
+	right: 0;
   text-align: right;
-  margin: 0.2em 5% 0 16%;
+  margin: 0.2em 5em 0 15em;
   padding: 0 3em;
   min-width: 48em; /* don't overlap with header */
-  max-width: 700px;
+  max-width: 58em;
 	color: black;
 	line-height: 150%;
 	z-index: 100;
@@ -178,11 +178,11 @@ table {
 
 #content {
 	position: relative;
-	min-width: 400px;
-  max-width: 700px;
+	min-width: 33em;
+  max-width: 58em;
 	min-height: 300px;
 	padding: 0 3em 2em;
-	margin: 0 5% 0 16%;
+	margin: 0 5em 0 15em;
 }
 
 #content h1 {
