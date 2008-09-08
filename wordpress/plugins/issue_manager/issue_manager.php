@@ -59,10 +59,6 @@ function issue_manager_admin(  ) {
     }
   }
   include_once('im_admin_main.php');
-  
-  issue_manager_debug($published);
-  issue_manager_debug($unpublished);
-  issue_manager_debug($categories);
 }
 
 function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
@@ -77,7 +73,6 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
     update_option( 'im_published_categories', $published );
     
     $posts = get_posts( "numberposts=-1&post_status=pending&category=$cat_ID" );
-    issue_manager_debug($posts);
     foreach ( $posts as $post ) {
       $publish_now = TRUE;
       foreach ( get_the_category($post->ID) as $cat ) {
