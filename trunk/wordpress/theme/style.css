@@ -66,7 +66,7 @@ table {
 
 #page {
 	position: relative;
-	min-width: 70em;
+	min-width: 59em;
   max-width: 84em;
 }
 
@@ -123,11 +123,11 @@ table {
 
 #about {
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 0.2em;
+	right: 8em;
   text-align: right;
-  margin: 0.2em 5em 0 15em;
-  padding: 0 3em;
+  margin-left: 15em;
+  padding-left: 3em;
   width: 48em; /* don't overlap with header */
 	color: black;
 	line-height: 150%;
