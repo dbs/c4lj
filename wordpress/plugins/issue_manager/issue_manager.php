@@ -76,6 +76,9 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
     sort($published);
     update_option( 'im_published_categories', $published );
     
+    $posts = get_posts();
+    issue_manager_debug($posts);
+    
     $posts = get_posts( "numberposts=-1&category=$cat_ID" );
     issue_manager_debug($posts);
     foreach ( $posts as $post ) {
