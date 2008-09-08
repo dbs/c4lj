@@ -1,7 +1,9 @@
 <?php
 function c4lj_current_issue() {
   $issue_parent = get_category_by_slug('issues');
+  var_dump($issue_parent);
   $categories = get_categories( "child_of=$issue_parent->cat_ID&orderby=ID&order=desc&hierarchical=0" );
+  var_dump($categories);
   
   $published = get_option( 'im_published_categories' );
   
