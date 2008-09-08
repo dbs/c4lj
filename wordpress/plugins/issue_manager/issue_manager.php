@@ -77,7 +77,7 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
     foreach ( $posts as $post ) {
       wp_update_post( array(
         'ID' => $post->ID,
-        'post_date' => date( 'Y-m-d H:i:s', current_time('timestamp')-$counter )
+        'post_date' => date( 'Y-m-d H:i:s', current_time('timestamp')-($counter*60) )
       ) );
       wp_publish_post($post->ID);
       $counter++;
