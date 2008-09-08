@@ -8,12 +8,12 @@
 				<div id="archives">
 					<h2>Current Issue</h2>
 						<ul>
-							<li><a href="<?php echo get_option('home'); ?>/issues/issue2">Issue 2, 2008-03-24</a></li>
+							<li><?php echo c4lj_current_issue(); ?></li>
 						</ul>
 						
 					<h2>Previous Issues</h2>
 						<ul>
-							<li><a href="<?php echo get_option('home'); ?>/issues/issue1">Issue 1, 2007-12-17</a></li>
+              <?php echo c4lj_recent_issues(); ?>
 						</ul>
 				</div>
 				<div id="about">
