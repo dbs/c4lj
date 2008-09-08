@@ -342,6 +342,7 @@ table {
 
 #content .entry th, #content .entry td {
 	padding: 0.25em;
+  border: 1px solid #000000;
 }
 #content .entry th {
   background-color: #D3D3D3;
