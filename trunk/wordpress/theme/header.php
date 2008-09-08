@@ -9,8 +9,11 @@
 		<meta name="generator" content="WordPress <?php bloginfo('version'); ?>" /> <!-- leave this for stats -->
 	
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen, print" />
-		<!--[if IE]>
-		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/fix-ie.css" type="text/css" media="screen" />
+		<!--[if lte IE 7]>
+		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/fix-ie7.css" type="text/css" media="screen" />
+		<![endif]-->
+		<!--[if lte IE 6]>
+		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/fix-ie6.css" type="text/css" media="screen" />
 		<![endif]-->
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/print.css" type="text/css" media="print" />
 		<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Syndication Feed" href="<?php bloginfo('rss2_url'); ?>" />
