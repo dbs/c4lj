@@ -1,8 +1,8 @@
-#page {
+div#page {
   width: 76em;
 }
 
-#content {
+div#content {
 	margin-left: 15em;
 }
 
