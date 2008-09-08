@@ -343,6 +343,9 @@ table {
 #content .entry th, #content .entry td {
 	padding: 0.25em;
 }
+#content .entry th {
+  background-color: #D3D3D3;
+}
 
 /* CATEGORIES ******************************/
 
