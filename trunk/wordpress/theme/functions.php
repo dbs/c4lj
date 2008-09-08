@@ -7,7 +7,7 @@ function c4lj_current_issue() {
   
   foreach ( $categories as $cat ) {
     if ( in_array( $cat_ID, $published ) ) {
-      return '<a href="'.get_category_link($cat->cat_ID).'">'$cat->cat_name', '.$cat->category_description.'</a>';
+      return '<a href="'.get_category_link($cat->cat_ID).'">'.$cat->cat_name.', '.$cat->category_description.'</a>';
     }
   }
 }
