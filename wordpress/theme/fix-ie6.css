@@ -2,11 +2,7 @@ div#content {
 	margin-left: 15em;
 }
 
-#searchform, #archives, #forauthors {
-  margin: 0;
-  padding: 0;
-}
-
-#forauthors {
-	padding-top: .75em;
+#meta {
+  position: relative;
+  z-index: 90;
 }
