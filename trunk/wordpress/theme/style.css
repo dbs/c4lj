@@ -178,8 +178,8 @@ table {
 	min-width: 33em;
   max-width: 58em;
 	min-height: 300px;
-	padding: 0 3em 2em;
-	margin: 0 5em 0 15em;
+	padding: 0 8em 2em 3em;
+	margin: 0 0 0 15em;
 }
 
 #content h1 {
