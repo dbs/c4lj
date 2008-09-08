@@ -74,20 +74,11 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
     
     $posts = get_posts( "numberposts=-1&post_status=pending&category=$cat_ID" );
     foreach ( $posts as $post ) {
-      $publish_now = TRUE;
-      foreach ( get_the_category($post->ID) as $cat ) {
-        if ( in_array( $cat->cat_ID, $unpublished ) ) {
-          $publish_now = FALSE;
-          break;
-        }
-      }
-      if ( $publish_now ) {
-        wp_update_post( array(
-          'ID' => $post->ID,
-          'post_status' => 'publish',
-          'post_date' => current_time('mysql')
-        ) );
-      }
+      wp_update_post( array(
+        'ID' => $post->ID,
+        'post_date' => current_time('mysql')
+      ) );
+      wp_publish_post($post->ID);
     }
   }
 }
@@ -113,13 +104,24 @@ function issue_manager_unpublish( $cat_ID, &$published, &$unpublished ) {
   }
 }
 
-function issue_manager_install(  ) {
-}
-
-function issue_manager_uninstall(  ) {
+function issue_manager_publish_intercept( $post_ID ) {
+  $unpublished = get_option( 'im_unpublished_categories' );
+  $publishable = TRUE;
+  foreach ( get_the_category($post_ID) as $cat ) {
+    if ( in_array( $cat->cat_ID, $unpublished ) ) {
+      $publishable = FALSE;
+      break;
+    }
+  }
+  
+  if ( !$publishable ) {
+    wp_update_post( array(
+      'ID' => $post_ID,
+      'post_status' => 'pending'
+    ) );
+  }
   
 }
 
 add_action('admin_menu', 'issue_manager_manage_page');
-//register_activation_hook(__FILE__, 'issue_manager_install');
-//register_deactivation_hook(__FILE__, 'issue_manager_uninstall');
+add_action('publish_post', 'issue_manager_publish_intercept');
