@@ -76,27 +76,22 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
     sort($published);
     update_option( 'im_published_categories', $published );
     
-    $posts = get_posts( 'numberposts=-1' );
-    issue_manager_debug($posts);
-    
-    $posts = get_posts( "numberposts=-1&category=$cat_ID" );
+    $posts = get_posts( "numberposts=-1&post_status=pending&category=$cat_ID" );
     issue_manager_debug($posts);
     foreach ( $posts as $post ) {
-      if ( "pending" == $post->post_status ) {
-        $publish_now = TRUE;
-        foreach ( get_the_category($post->ID) as $cat ) {
-          if ( in_array( $cat->cat_ID, $unpublished ) ) {
-            $publish_now = FALSE;
-            break;
-          }
+      $publish_now = TRUE;
+      foreach ( get_the_category($post->ID) as $cat ) {
+        if ( in_array( $cat->cat_ID, $unpublished ) ) {
+          $publish_now = FALSE;
+          break;
         }
-        if ( $publish_now ) {
-          wp_update_post( array(
-            'ID' => $post->ID,
-            'post_status' => 'publish',
-            'post_date' => date("Y-m-d H:i:s")
-          ) );
-        }
+      }
+      if ( $publish_now ) {
+        wp_update_post( array(
+          'ID' => $post->ID,
+          'post_status' => 'publish',
+          'post_date' => date("Y-m-d H:i:s")
+        ) );
       }
     }
   }
