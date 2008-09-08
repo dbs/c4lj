@@ -24,7 +24,7 @@ function c4lj_recent_issues() {
     if ( $count < 5 ) {
       if ( in_array( $cat_ID, $published ) ) {
         if ( $count > 0 ) {
-          $out .= '<li><a href="'.get_category_link($cat->cat_ID).'">'$cat->cat_name', '.$cat->category_description.'</a></li>';
+          $out .= '<li><a href="'.get_category_link($cat->cat_ID).'">'.$cat->cat_name.', '.$cat->category_description.'</a></li>';
         }
         $count++;
       }
