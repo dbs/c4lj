@@ -90,7 +90,8 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
         wp_update_post( array(
           'ID' => $post->ID,
           'post_status' => 'publish',
-          'post_date' => date("Y-m-d H:i:s")
+          'post_date' => date("Y-m-d H:i:s"),
+          'post_date_gmt' => gmdate("Y-m-d H:i:s")
         ) );
       }
     }
@@ -108,14 +109,12 @@ function issue_manager_unpublish( $cat_ID, &$published, &$unpublished ) {
     sort( $unpublished );
     update_option( 'im_unpublished_categories', $unpublished );
     
-    $posts = get_posts( "numberposts=-1&category=$cat_ID" );
+    $posts = get_posts( "numberposts=-1&post_status=publish&category=$cat_ID" );
     foreach ( $posts as $post ) {
-      if ( "publish" == $post->post_status || "future" == $post->post_status ) {
-        wp_update_post( array(
-          'ID' => $post->ID,
-          'post_status' => 'pending'
-        ) );
-      }
+      wp_update_post( array(
+        'ID' => $post->ID,
+        'post_status' => 'pending'
+      ) );
     }
   }
 }
