@@ -90,8 +90,7 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
         wp_update_post( array(
           'ID' => $post->ID,
           'post_status' => 'publish',
-          'post_date' => date("Y-m-d H:i:s"),
-          'post_date_gmt' => gmdate("Y-m-d H:i:s")
+          'post_date' => current_time('mysql')
         ) );
       }
     }
