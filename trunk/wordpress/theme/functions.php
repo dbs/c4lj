@@ -11,6 +11,18 @@ function c4lj_current_issue() {
     }
   }
 }
+function c4lj_current_issue_id() {
+  $issue_parent = get_category_by_slug('issues');
+  $categories = get_categories( "child_of=$issue_parent->cat_ID&orderby=ID&order=desc&hierarchical=0" );
+  
+  $published = get_option( 'im_published_categories' );
+  
+  foreach ( $categories as $cat ) {
+    if ( in_array( $cat->cat_ID, $published ) ) {
+      return $cat->cat_ID;
+    }
+  }
+}
 
 function c4lj_recent_issues() {
   $issue_parent = get_category_by_slug('issues');
