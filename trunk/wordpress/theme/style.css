@@ -170,6 +170,11 @@ table {
 	font-weight: bold;
 }
 
+#searchform, #archives, #forauthors {
+  position: relative;
+	z-index: 90;
+}
+
 
 /* PAGE BODY **************************************/
 
@@ -180,6 +185,7 @@ table {
 	min-height: 300px;
 	padding: 0 8em 2em 3em;
 	margin: 0 0 0 15em;
+	z-index: 1;
 }
 
 #content h1 {
