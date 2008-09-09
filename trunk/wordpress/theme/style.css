@@ -410,11 +410,11 @@ table {
 div#footer {
 	position: relative; 
 	clear: both;
-  margin: 0.5em 5% 0 16%;
+  margin: 0.5em 0 0 15em;
   padding-left: 3em;
-  padding-right: 3em;
-  max-width: 700px;
-  min-width: 400px;
+  padding-right: 8em;
+	min-width: 33em;
+  max-width: 58em;
 }
 
 div#footer p#login {
