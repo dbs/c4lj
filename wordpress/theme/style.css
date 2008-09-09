@@ -235,6 +235,12 @@ table {
 	max-width: 100%;
 }
 
+#content .Z3988 img {
+  display: inline;
+  margin: 0;
+  padding: 0 2px;
+}
+
 #content ul {
 	list-style-type: square;
 	margin-left: 2em;
