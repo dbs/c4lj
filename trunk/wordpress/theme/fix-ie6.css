@@ -10,3 +10,9 @@ div#content {
   position: static;
   z-index: 90;
 }
+
+div#footer #copyright {
+  position: relative;
+  bottom: 2em;
+  width: 99%;
+}
