@@ -115,7 +115,7 @@ THE SOFTWARE.
 <xsl:variable name="filename">
 
 <!-- cut down to just the filename - split on / and grab last one -->
-<xsl:value-of select="concat('images\', tokenize(@src, '/')[last()])"/>
+<xsl:value-of select="concat('images/', tokenize(@src, '/')[last()])"/>
 
 </xsl:variable>
 
