@@ -413,7 +413,7 @@ table {
 }
 
 /* FOOTER *******************************/
-div#footer {
+#footer {
 	position: relative; 
 	clear: both;
   margin: 0.5em 0 0 15em;
@@ -423,13 +423,13 @@ div#footer {
   max-width: 58em;
 }
 
-div#footer p#login {
+#footer p#login {
   float: left;
   padding-top: 10px;
 	text-align: left;
 }
 
-div#footer p#copyright {
+#footer p#copyright {
 	text-align: right;
   padding-top: 7px;
 	border-top: 3px solid #803030;
