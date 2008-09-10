@@ -7,7 +7,7 @@ body {
 }
 
 #page {
-	min-width: 10px;
+	min-width: 1em;
 }
 
 #meta, #archives, #footer #login, .comments #respond, .comments #commentform, .article .aboutcomments, .article .subscriptionlinks {
@@ -20,6 +20,7 @@ body {
 	border-width: 0;
 	border-style: none;
 	margin: 0 1%;
+  min-width: 1em;
 }
 
 #content .entry pre {
