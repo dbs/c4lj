@@ -47,16 +47,8 @@ THE SOFTWARE.
 
 <xsl:message><xsl:value-of select="$title"/> (<xsl:value-of select="$issue"/>)</xsl:message>
 
-<fo:root xmlns:rx="http://www.renderx.com/XSL/Extensions">
+<fo:root>
 
-<!-- Through a RenderX extension, these fields setup the Document Info fields ("metadata") in the PDF file -->
-<rx:meta-info>
-   <rx:meta-field name="author" value="{$authors}"/>
-   <rx:meta-field name="title" value="{$title}"/>
-   <!--<rx:meta-field name="subject" value=""/>-->
-   <!--<rx:meta-field name="keywords" value=""/>-->
-</rx:meta-info>
-      
 <fo:layout-master-set>
 		
 <fo:simple-page-master master-name="firstpage"
