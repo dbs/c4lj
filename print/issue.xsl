@@ -1,5 +1,9 @@
 <?xml version='1.0'?>
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<xsl:stylesheet version="2.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+    xmlns:fo="http://www.w3.org/1999/XSL/Format"
+    xmlns:date="http://exslt.org/dates-and-times">
+
 
 <!-- XSL-FO Stylesheet, Issue PDFs for The Code4Lib Journal -->
 
