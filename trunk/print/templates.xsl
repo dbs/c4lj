@@ -121,7 +121,10 @@ THE SOFTWARE.
 
 <xsl:message>  filename + replace = <xsl:value-of select="replace($filename, '\.(\w{3})', '_fullsize.$1')"/></xsl:message>
 
-<fo:block><fo:external-graphic src="url({replace($filename, '\.(\w{3})', '_fullsize.$1')})"/></fo:block>
+<fo:block>
+<fo:external-graphic src="url({replace($filename, '\.(\w{3})', '_fullsize.$1')})"
+	width="100%" content-width="scale-to-fit" scaling="uniform" content-height="100%"/>
+</fo:block>
 
 <!--
 <xsl:choose>
