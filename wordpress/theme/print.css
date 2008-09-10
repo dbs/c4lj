@@ -35,3 +35,10 @@ body {
 img {
 	page-break-inside: avoid;
 }
+
+#footer {
+	width: 95%;
+	margin: 0.5em 1% 0;
+  padding-left: 0;
+  padding-right: 0;
+}
