@@ -1,6 +1,6 @@
 			<div id="footer">
 				<p id="login"><?php wp_loginout(); ?><?php wp_register(' | ', ''); ?></p>
-				<p id="copyright"><?php bloginfo('name'); ?>, <?php print date("Y-m-d"); ?></p>
+				<p id="copyright"><?php bloginfo('name'); ?></p>
 			</div>
 			<?php wp_footer(); ?>
 		</div>
