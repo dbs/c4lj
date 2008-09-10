@@ -12,7 +12,7 @@
 								break; // only do this once. Something's wrong if it's in multiple issues
 							}
 						}?></p>
-					<h1 class="articletitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+					<h1 class="articletitle"><?php the_title(); ?></h1>
 					<div class="abstract">
 						<?php the_excerpt(); ?>
 					</div>

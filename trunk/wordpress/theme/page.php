@@ -4,7 +4,7 @@
 			<div id="content">
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				<div class="page" id="post-<?php the_ID(); ?>">
-					<h1 class="pagetitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+					<h1 class="pagetitle"><?php the_title(); ?></h1>
 					<div class="entry">
 						<?php the_content('<p class="readmore">Read the rest of this page...</p>'); ?>
 					</div>
