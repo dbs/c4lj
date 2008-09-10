@@ -133,13 +133,13 @@ table {
 	line-height: 150%;
 	z-index: 100;
 }
-#about a {
+/*#about a {
 	color: black;
   text-decoration: underline;
 }
 #about a:hover {
   color: #803030;
-}
+}*/
 
 #about ul {
 	float: right;
@@ -191,7 +191,6 @@ table {
 #content h1 {
 	margin: 0.25em 0 .1em;
   padding-top: 0.5em;
-  padding-right: 40%;
   border-top: 3px solid #803030;
 	font-size: 200%;
 	font-weight: bold;
@@ -295,7 +294,6 @@ table {
 /* ARTICLES ********************************/
 
 #content .abstract {
-  width: 60%;
 	font-style: italic;
 	line-height: 1.25em;
 	font-size: 1.1em;
