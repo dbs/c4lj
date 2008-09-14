@@ -35,14 +35,16 @@
 
 	<?php foreach ($comments as $comment) : ?>
 		<li <?php echo $oddcomment; ?>id="comment-<?php comment_ID() ?>">
-			<p><cite><?php comment_author_link() ?></cite>,
+			<p class="commentheader"><cite><?php comment_author_link() ?></cite>,
 			<?php if ($comment->comment_approved == '0') : ?>
 			<em>Your comment is awaiting moderation.</em>
 			<?php endif; ?>
 
 			<span class="commentmetadata"><a href="#comment-<?php comment_ID() ?>" title=""><?php comment_date() ?></a><?php edit_comment_link('edit',' | ',''); ?></span></p>
-
-			<?php comment_text() ?>
+      
+      <div class="commentbody">
+  			<?php comment_text() ?>
+      </div>
 
 		</li>
 	<?php

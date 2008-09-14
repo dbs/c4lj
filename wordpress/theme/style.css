@@ -19,12 +19,8 @@ body, h1, h2, h3, h4, h5, h6, img, ol, ul, li, p, div {
 /* COLORS *****************************************/
 
 
-#content h1, #content h2, #commentform label, #content h2.author {
+#content h2, #commentform label, #content h2.author {
 	color: #000000;
-}
-
-ol.commentlist li.oddcomment {
-	background-color: #EDEDE5; /* light grey */
 }
 
 #content .entry pre {
@@ -396,20 +392,25 @@ table {
 
 
 /* COMMENTS *****************************/
+
 #content ol.commentlist {
 	margin: 1em 0;
 	padding: 0 1.75em;
 }
 
+ol.commentlist li.oddcomment .commentbody {
+	background-color: #EDEDE5; /* light grey */
+}
+
 #content ol.commentlist li {
-	padding: 1em;
+	margin: 1em;
 }
 
 #content ol.commentlist li cite {
 	font-style: normal;
+  padding: 0;
 }
 #content ol.commentlist li .commentmetadata {
-	font-size: 75%;
 }
 
 /* COMMENT FORM *************************/
