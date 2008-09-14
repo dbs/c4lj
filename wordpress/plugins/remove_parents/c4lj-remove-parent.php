@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: C4LJ Remove Parents
-Plugin URI: http://wordpress.org/#
+Plugin URI: http://code.google.com/p/c4lj/
 Description: Remove parent directories & "category" from category permalinks.
 Author: Jonathan Brinley
-Version: 0.2
+Version: 2.0
 Author URI: http://xplus3.net/
 */
 /*
