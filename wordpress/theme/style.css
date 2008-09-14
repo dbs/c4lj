@@ -360,9 +360,13 @@ table {
 /* PAGES ******************************/
 
 #content .page h1.pagetitle {
-  margin-top: 1.25em;
+  margin-top: 1em;
   padding-top: 0;
   border-top-style: none;
+}
+
+#content .page .entry {
+  margin-top: 1em;
 }
 
 /* CATEGORIES ******************************/
