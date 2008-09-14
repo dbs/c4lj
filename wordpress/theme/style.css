@@ -361,12 +361,9 @@ table {
 
 #content .page h1.pagetitle {
   margin-top: 1em;
+  margin-bottom: -0.5em;
   padding-top: 0;
   border-top-style: none;
-}
-
-#content .page .entry {
-  margin-top: 1em;
 }
 
 /* CATEGORIES ******************************/
