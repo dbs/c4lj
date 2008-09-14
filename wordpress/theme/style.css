@@ -359,7 +359,7 @@ table {
 
 /* CATEGORIES ******************************/
 
-#content h1.pagetitle {
+#content.listpage h1.pagetitle {
   margin-top: -0.75em;
   border-bottom: 3px solid #803030;
   border-top: 0px solid transparent;
