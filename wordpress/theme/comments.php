@@ -35,12 +35,12 @@
 
 	<?php foreach ($comments as $comment) : ?>
 		<li <?php echo $oddcomment; ?>id="comment-<?php comment_ID() ?>">
-			<p><cite><?php comment_author_link() ?></cite> Says:
+			<p><cite><?php comment_author_link() ?></cite>,
 			<?php if ($comment->comment_approved == '0') : ?>
 			<em>Your comment is awaiting moderation.</em>
 			<?php endif; ?>
 
-			<span class="commentmetadata"><a href="#comment-<?php comment_ID() ?>" title=""><?php comment_date() ?> at <?php comment_time() ?></a><?php edit_comment_link('edit',' | ',''); ?></span></p>
+			<span class="commentmetadata"><a href="#comment-<?php comment_ID() ?>" title=""><?php comment_date() ?> at <?php comment_date('Y-m-d') ?></a><?php edit_comment_link('edit',' | ',''); ?></span></p>
 
 			<?php comment_text() ?>
 
