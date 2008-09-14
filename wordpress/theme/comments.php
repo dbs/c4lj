@@ -40,7 +40,7 @@
 			<em>Your comment is awaiting moderation.</em>
 			<?php endif; ?>
 
-			<span class="commentmetadata"><a href="#comment-<?php comment_ID() ?>" title=""><?php comment_date() ?> at <?php comment_date('Y-m-d') ?></a><?php edit_comment_link('edit',' | ',''); ?></span></p>
+			<span class="commentmetadata"><a href="#comment-<?php comment_ID() ?>" title=""><?php comment_date() ?></a><?php edit_comment_link('edit',' | ',''); ?></span></p>
 
 			<?php comment_text() ?>
 
