@@ -411,9 +411,11 @@ table {
   margin-top: 0;
 }
 
+ol.commentlist li .commentbody {
+  padding: 1em;
+}
 ol.commentlist li.oddcomment .commentbody {
 	background-color: #EDEDE5; /* light grey */
-  padding: 1em;
 }
 
 /* COMMENT FORM *************************/
