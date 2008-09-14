@@ -357,6 +357,12 @@ table {
   background-color: #D3D3D3;
 }
 
+/* PAGES ******************************/
+
+#content .page h1.pagetitle {
+  margin-top: 1.5em;
+}
+
 /* CATEGORIES ******************************/
 
 #content.listpage h1.pagetitle {
