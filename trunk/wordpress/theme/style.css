@@ -398,10 +398,6 @@ table {
 	padding: 0 1.75em;
 }
 
-ol.commentlist li.oddcomment .commentbody {
-	background-color: #EDEDE5; /* light grey */
-}
-
 #content ol.commentlist li {
 	margin: 1em;
 }
@@ -410,7 +406,12 @@ ol.commentlist li.oddcomment .commentbody {
 	font-style: normal;
   padding: 0;
 }
-#content ol.commentlist li .commentmetadata {
+#content ol.commentlist li .commentheader {
+  margin-top: 0;
+}
+
+ol.commentlist li.oddcomment .commentbody {
+	background-color: #EDEDE5; /* light grey */
 }
 
 /* COMMENT FORM *************************/
