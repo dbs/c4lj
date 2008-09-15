@@ -67,31 +67,14 @@ if ( !class_exists("DoNotPublish") ) {
 		function c4ljPermissions() { //constructor
 			
 		}
-
-		function prevent_publishing($capabilities, $caps, $args) {
-			// $capabilities = list of users capabilities
-			// $caps = array($args[0]) = array(capability in question)
-			
-			$user = get_userdata($args[1]); // $args[1] = user ID
-			if ( $user ) {
-				$roles = array_keys($user->wp_capabilities);
-				
-				//prevents publishing unless user is administrator
-				//TODO: make an options screen for this, to pick roles
-				if ( !in_array("administrator", $roles) ) {
-					$capabilities["publish_posts"] = false;
-				}
-			}
-			return $capabilities;
-		}
 		
 		function show_author_preview($capabilities, $caps, $args) {
 			// $capabilities = list of users capabilities
 			// $caps = array($args[0]) = array(capability in question)
 			//prevents publishing unless user is administrator
 			//TODO: make an options screen for this, to pick users
-			if ( $args[1] == 17 ) {
-				$capabilities["read_private_posts"] = true;
+			if ( $args[1] == 17 && !is_admin() ) {
+				$capabilities["edit_others_posts"] = true;
 			}
 			return $capabilities;
 		}
@@ -106,7 +89,6 @@ if ( class_exists("c4ljPermissions") ) {
 if ( isset($c4ljp) ) {
 	//Actions
 	//Filters
-	add_filter('user_has_cap', array(&$c4ljp, 'prevent_publishing'), 1, 3);
 	add_filter('user_has_cap', array(&$c4ljp, 'show_author_preview'), 2, 3);
 }
 ?>
