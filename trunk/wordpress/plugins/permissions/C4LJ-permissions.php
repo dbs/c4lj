@@ -2,8 +2,8 @@
 /*
 Plugin Name: C4LJ Permissions
 Plugin URI: http://journal.code4lib.org/
-Description: Prevents non-admins from publishing articles, lets authors see private posts
-Version: 1.0
+Description: Lets authors see pending posts
+Version: 1.1
 Author: Jonathan Brinley
 Author URI: http://xplus3.net/
 */
