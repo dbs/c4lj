@@ -88,6 +88,24 @@ THE SOFTWARE.
 </fo:layout-master-set>
 
 
+<fo:declarations>
+  <x:xmpmeta xmlns:x="adobe:ns:meta/">
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about="" xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <!-- Dublin Core -->
+        <dc:title><xsl:value-of select="$title"/></dc:title>
+        <dc:creator><xsl:value-of select="$journal"/>, <xsl:value-of select="$issn"/></dc:creator>
+<!--        <dc:description>Document subject</dc:subject> -->
+      </rdf:Description>
+      <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/">
+        <!-- XMP properties -->
+        <xmp:CreatorTool>Apache FOP</xmp:CreatorTool>
+      </rdf:Description>
+    </rdf:RDF>
+  </x:xmpmeta>
+</fo:declarations>
+
+
 
 <fo:page-sequence master-reference="firstpage">
 
