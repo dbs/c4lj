@@ -121,15 +121,11 @@ THE SOFTWARE.
 
 <xsl:value-of select="$title"/>
 
-<fo:leader leader-pattern="dots" leader-alignment="reference-area"/>
-
-</fo:basic-link>
+<fo:leader leader-pattern="dots"/>
 
 <fo:basic-link internal-destination="article{.}" text-decoration="underline" color="blue">
-
-<fo:page-number-citation>
-	<xsl:attribute name="ref-id">article<xsl:value-of select="."/></xsl:attribute>
-</fo:page-number-citation>
+<fo:page-number-citation ref-id="article{.}"/>
+</fo:basic-link>
 
 </fo:basic-link>
 
