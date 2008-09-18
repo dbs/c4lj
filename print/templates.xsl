@@ -33,31 +33,36 @@ THE SOFTWARE.
 	<fo:block space-after=".15in" font="11pt Times"><xsl:apply-templates/></fo:block>
 </xsl:template>
 
+<xsl:template match="div">
+	<fo:block space-after=".15in"><xsl:apply-templates/></fo:block>
+</xsl:template>
+
+
 
 <xsl:template match="h2">
-	<fo:block space-after=".2in" font-size="14pt" font-weight="bold"><xsl:value-of select="."/></fo:block>
+	<fo:block space-before=".3in" space-after=".2in" font-size="14pt" font-weight="bold"><xsl:value-of select="."/></fo:block>
 </xsl:template>
 
 <xsl:template match="h3">
-	<fo:block space-after=".2in" font-size="12pt" font-weight="bold"><xsl:value-of select="."/></fo:block>
+	<fo:block space-before=".1in" space-after=".2in" font-size="12pt" font-weight="bold"><xsl:value-of select="."/></fo:block>
 </xsl:template>
 
 <xsl:template match="h4">
-	<fo:block space-after=".2in" font-size="11pt" font-weight="bold"><xsl:value-of select="."/></fo:block>
+	<fo:block space-before=".1in" space-after=".2in" font-size="11pt" font-weight="bold"><xsl:value-of select="."/></fo:block>
 </xsl:template>
 
 
 
 <xsl:template match="b">
-	<fo:wrapper font-weight="bold"><xsl:value-of select="."/></fo:wrapper>
+	<fo:wrapper font-weight="bold"><xsl:apply-templates/></fo:wrapper>
 </xsl:template>
  
 <xsl:template match="i">
-	<fo:wrapper font-style="italic"><xsl:value-of select="."/></fo:wrapper>
+	<fo:wrapper font-style="italic"><xsl:apply-templates/></fo:wrapper>
 </xsl:template>
  
 <xsl:template match="u">
-	<fo:wrapper text-decoration="underline"><xsl:value-of select="."/></fo:wrapper>
+	<fo:wrapper text-decoration="underline"><xsl:apply-templates/></fo:wrapper>
 </xsl:template>
 
 
@@ -71,7 +76,7 @@ THE SOFTWARE.
 
 
 <xsl:template match="a">
-	<fo:basic-link external-destination="url({@href})" text-decoration="underline" color="blue"><xsl:value-of select="."/></fo:basic-link>
+	<fo:basic-link external-destination="url({@href})" text-decoration="underline" color="blue"><xsl:apply-templates/></fo:basic-link>
 </xsl:template>
 
 
@@ -113,29 +118,17 @@ THE SOFTWARE.
 <xsl:template match="img">
 
 <xsl:variable name="filename">
-
-<!-- cut down to just the filename - split on / and grab last one -->
-<xsl:value-of select="concat('images/', tokenize(@src, '/')[last()])"/>
-
+<xsl:choose>
+<xsl:when test="parent::a"><xsl:value-of select="concat('images/', tokenize(parent::a/@href, '/')[last()])"/></xsl:when>
+<xsl:otherwise><xsl:value-of select="concat('images/', tokenize(@src, '/')[last()])"/></xsl:otherwise>
+</xsl:choose>
 </xsl:variable>
 
-<xsl:message>  filename + replace = <xsl:value-of select="replace($filename, '\.(\w{3})', '_fullsize.$1')"/></xsl:message>
+<xsl:message>image filename = <xsl:value-of select="$filename"/></xsl:message>
 
 <fo:block>
-<fo:external-graphic src="url({replace($filename, '\.(\w{3})', '_fullsize.$1')})"
-	width="100%" content-width="scale-to-fit" scaling="uniform" content-height="100%"/>
+<fo:external-graphic src="url({$filename})" width="100%" content-width="scale-to-fit" scaling="uniform" content-height="100%"/>
 </fo:block>
-
-<!--
-<xsl:choose>
-<xsl:when test="../a">
-	<fo:block><fo:external-graphic src="url({../a/@href})"/></fo:block>
-</xsl:when>
-<xsl:otherwise>
-	<fo:block><fo:external-graphic src="url({@src})"/></fo:block>
-</xsl:otherwise>
-</xsl:choose>
--->
 
 </xsl:template>
 
