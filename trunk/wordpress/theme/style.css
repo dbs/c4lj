@@ -254,7 +254,7 @@ table {
 #content blockquote {
 }
 
-#content cite {
+#content blockquote cite {
 	font-size: 90%;
 	padding-left: 2em;
 }
