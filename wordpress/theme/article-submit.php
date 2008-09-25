@@ -1,3 +1,8 @@
+<?php
+/*
+Template Name: Article Submission
+*/
+?>
 <?php get_header(); ?>
 <?php get_sidebar(); ?>
 
