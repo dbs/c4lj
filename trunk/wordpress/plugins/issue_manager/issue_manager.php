@@ -2,7 +2,7 @@
 /*
 Plugin Name: Issue Manager
 Plugin URI: http://code.google.com/p/c4lj/
-Description: Allows an editor to publish an "issue", which is to say, all pending posts with a given category. Until a category is published, all posts with that category will remain in the pending state. The editor can determine what time to publish an issue, and in what order the posts should appear.
+Description: Allows an editor to publish an "issue", which is to say, all pending posts with a given category. Until a category is published, all posts with that category will remain in the pending state.
 Version: 1.1
 Author: Jonathan Brinley
 Author URI: http://xplus3.net/
@@ -18,9 +18,11 @@ function issue_manager_admin(  ) {
   $unpublished = get_option( 'im_unpublished_categories' );
   $categories = get_categories( 'orderby=name&hierarchical=0&hide_empty=0' );
   
+  // Make sure the options exist
   if ( $published === FALSE ) { $published = array(); update_option( 'im_published_categories', $published ); }
   if ( $unpublished === FALSE ) { $unpublished = array(); update_option( 'im_unpublished_categories', $unpublished ); }
   
+  // See if we have GET parameters
   $cat_ID = isset($_GET['cat_ID'])?$_GET['cat_ID']:null;
   $action = isset($_GET['action'])?$_GET['action']:null;
     
@@ -34,6 +36,7 @@ function issue_manager_admin(  ) {
         issue_manager_unpublish($cat_ID, $published, $unpublished);
         break;
       case "ignore":
+        // stop tracking the cat_ID
         $key = array_search($cat_ID, $published);
         if ( FALSE !== $key ) {
           array_splice($published, $key, 1);
@@ -53,23 +56,28 @@ function issue_manager_admin(  ) {
 }
 
 function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
+  // take the category out of the unpublished list
   $key = array_search( $cat_ID, $unpublished );
   if ( FALSE !== $key ) {
     array_splice( $unpublished, $key, 1 );
     update_option( 'im_unpublished_categories', $unpublished );
   }
   if ( !in_array( $cat_ID, $published ) ) {
+    // add to the published list
     $published[] = $cat_ID;
     sort($published);
     update_option( 'im_published_categories', $published );
     
+    // get all pending posts in the category
     $posts = get_posts( "numberposts=-1&post_status=pending&category=$cat_ID" );
     $counter = 0;
     foreach ( $posts as $post ) {
+      // set the date to about now, keeping a minute gap so posts stay in order
       wp_update_post( array(
         'ID' => $post->ID,
         'post_date' => date( 'Y-m-d H:i:s', strtotime(current_time('mysql'))-($counter*60) )
       ) );
+      // let WP work its magic to publish the post
       wp_publish_post($post->ID);
       $counter++;
     }
@@ -77,16 +85,19 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
 }
 
 function issue_manager_unpublish( $cat_ID, &$published, &$unpublished ) {
+  // take the category out of the published list
   $key = array_search( $cat_ID, $published );
   if ( FALSE !== $key ) {
     array_splice( $published, $key, 1 );
     update_option( 'im_published_categories', $published );
   }
   if ( !in_array( $cat_ID, $unpublished ) ) {
+    // add to the unpublished list
     $unpublished[] = $cat_ID;
     sort( $unpublished );
     update_option( 'im_unpublished_categories', $unpublished );
     
+    // change all published posts in the category to pending
     $posts = get_posts( "numberposts=-1&post_status=publish&category=$cat_ID" );
     foreach ( $posts as $post ) {
       wp_update_post( array(
