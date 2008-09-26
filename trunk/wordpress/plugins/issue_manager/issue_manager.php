@@ -3,18 +3,10 @@
 Plugin Name: Issue Manager
 Plugin URI: http://code.google.com/p/c4lj/
 Description: Allows an editor to publish an "issue", which is to say, all pending posts with a given category. Until a category is published, all posts with that category will remain in the pending state. The editor can determine what time to publish an issue, and in what order the posts should appear.
-Version: 1.0
+Version: 1.1
 Author: Jonathan Brinley
 Author URI: http://xplus3.net/
 */
-
-function issue_manager_debug( $debug ) {
-  echo '<div class="debug">';
-  echo '<pre style="background-color: #CCCCCC;">';
-  var_dump($debug);
-  echo '</pre>';
-  echo '</div>';
-}
   
 function issue_manager_manage_page(  ) {
   if ( function_exists('add_management_page') ) {
@@ -108,21 +100,40 @@ function issue_manager_unpublish( $cat_ID, &$published, &$unpublished ) {
 function issue_manager_publish_intercept( $post_ID ) {
   $unpublished = get_option( 'im_unpublished_categories' );
   $publishable = TRUE;
+  // check if post is in an unpublished category
   foreach ( get_the_category($post_ID) as $cat ) {
     if ( in_array( $cat->cat_ID, $unpublished ) ) {
       $publishable = FALSE;
       break;
     }
   }
-  
+  // if post is in an unpublished category, change its status to 'pending' instead of 'publish'
   if ( !$publishable ) {
     wp_update_post( array(
       'ID' => $post_ID,
       'post_status' => 'pending'
     ) );
   }
-  
+}
+
+function issue_manager_activation(  ) {
+  // if option records don't already exist, create them
+  if ( !get_option( 'im_published_categories' ) ) {
+    add_option( 'im_published_categories', array() );
+  }
+  if ( !get_option( 'im_unpublished_categories' ) ) {
+    add_option( 'im_unpublished_categories', array() );
+  }
+}
+function issue_manager_deactivation(  ) {
+  // they don't have to exist to be deleted
+  delete_option( 'im_published_categories' );
+  delete_option( 'im_unpublished_categories' );
 }
 
 add_action('admin_menu', 'issue_manager_manage_page');
 add_action('publish_post', 'issue_manager_publish_intercept');
+
+// Register hooks for activation/deactivation.
+register_activation_hook( __FILE__, 'issue_manager_activation' );
+register_deactivation_hook( __FILE__, 'issue_manager_deactivation' );
