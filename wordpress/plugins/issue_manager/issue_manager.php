@@ -12,6 +12,7 @@ function issue_manager_manage_page(  ) {
   if ( function_exists('add_management_page') ) {
     $page = add_management_page( 'Manage Issues', 'Issues', 'publish_posts', 'manage-issues', 'issue_manager_admin' );
     add_action("admin_print_scripts-$page", 'issue_manager_script_prereqs');
+    add_action("admin_print_scripts-$page", 'issue_manager_scripts');
     //add_action("admin_head-$page", 'issue_manager_scripts');
   }
 }
@@ -155,9 +156,7 @@ function issue_manager_script_prereqs(  ) {
   wp_enqueue_script( 'jquery' );
 }
 function issue_manager_scripts(  ) {
-  echo '<script type="text/javascript">';
-  include_once('im_sort_articles.js.php');
-  echo '</script>';
+  wp_enqueue_script( "im_sort_articles", WP_PLUGIN_URL.basename( dirname( __FILE__ ) )."/im_sort_articles.js", array( 'jquery' ) );
 }
 
 function issue_manager_article_list() {
