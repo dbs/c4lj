@@ -11,7 +11,7 @@ Author URI: http://xplus3.net/
 function issue_manager_manage_page(  ) {
   if ( function_exists('add_management_page') ) {
     $page = add_management_page( 'Manage Issues', 'Issues', 'publish_posts', 'manage-issues', 'issue_manager_admin' );
-    add_action("admin_print_scripts-$page", 'issue_manager_scripts');
+    add_action("admin_head-$page", 'issue_manager_scripts');
   }
 }
 function issue_manager_admin(  ) {
