@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Issue Manager
-Plugin URI: http://code.google.com/p/c4lj/
+Plugin URI: http://xplus3.net/2008/09/26/issue-manager/
 Description: Allows an editor to publish an "issue", which is to say, all pending posts with a given category. Until a category is published, all posts with that category will remain in the pending state.
-Version: 1.1
+Version: 1.2.0
 Author: Jonathan Brinley
 Author URI: http://xplus3.net/
 */
@@ -11,9 +11,7 @@ Author URI: http://xplus3.net/
 function issue_manager_manage_page(  ) {
   if ( function_exists('add_management_page') ) {
     $page = add_management_page( 'Manage Issues', 'Issues', 'publish_posts', 'manage-issues', 'issue_manager_admin' );
-    add_action("admin_print_scripts-$page", 'issue_manager_script_prereqs');
     add_action("admin_print_scripts-$page", 'issue_manager_scripts');
-    //add_action("admin_head-$page", 'issue_manager_scripts');
   }
 }
 function issue_manager_admin(  ) {
@@ -80,10 +78,8 @@ function issue_manager_publish( $cat_ID, $post_IDs, &$published, &$unpublished )
     sort($published);
     update_option( 'im_published_categories', $published );
     
-    // get all pending posts in the category
-    //$posts = get_posts( "numberposts=-1&post_status=pending&category=$cat_ID" );
+    // $post_IDs should have all pending posts' IDs in the category
     $counter = 0;
-    //foreach ( $posts as $post ) {
     foreach ( explode(',',$post_IDs) as $post_ID ) {
       $post_ID = (int)$post_ID;
       $post = get_post( $post_ID );
@@ -156,23 +152,13 @@ function issue_manager_deactivation(  ) {
   delete_option( 'im_published_categories' );
   delete_option( 'im_unpublished_categories' );
 }
-function issue_manager_script_prereqs(  ) {
-  wp_enqueue_script( 'jquery' );
-}
 function issue_manager_scripts(  ) {
   wp_enqueue_script( "jquery-ui-sortable", path_join(WP_PLUGIN_URL, basename( dirname( __FILE__ ) )."/jquery-ui-sortable-1.5.2.js"), array( 'jquery' ), '1.5.2' );
   wp_enqueue_script( "im_sort_articles", path_join(WP_PLUGIN_URL, basename( dirname( __FILE__ ) )."/im_sort_articles.js"), array( 'jquery' ) );
 }
 
-function issue_manager_article_list() {
-  $cat_ID = isset($_POST['cat_ID'])?$_POST['cat_ID']:null;
-  include_once('im_article_list.php');
-}
-
 add_action('admin_menu', 'issue_manager_manage_page');
 add_action('publish_post', 'issue_manager_publish_intercept');
-
-//add_action('wp_ajax_issue_manager_article_list', 'issue_manager_article_list');
 
 
 // Register hooks for activation/deactivation.
