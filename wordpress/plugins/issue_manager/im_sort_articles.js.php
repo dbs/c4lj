@@ -1,5 +1,6 @@
 jQuery(document).ready( function($) {
   $('a.im-publish').click( function() {
+    $("#im_article_list").remove();
     catID = $(this).parent().parent().attr('id').substring(4);
     $.post(
       "<?php bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php",
