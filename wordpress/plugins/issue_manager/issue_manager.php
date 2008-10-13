@@ -30,9 +30,6 @@ function issue_manager_admin(  ) {
   if ( $cat_ID ) {
     $cat_ID = (int)$cat_ID;
     switch($action) {
-      case "list":
-        include_once('im_article_list.php');
-        die;
       case "publish":
         issue_manager_publish($cat_ID, $published, $unpublished);
         break;
@@ -148,11 +145,17 @@ function issue_manager_deactivation(  ) {
 
 function issue_manager_scripts(  ) {
   wp_enqueue_script( 'im_sort_articles', path_join( WP_PLUGIN_URL, basename( dirname( __FILE__ ) ) . '/im_sort_articles.js.php' ), array( 'jquery' ) );
-  
+}
+
+function issue_manager_article_list() {
+  $cat_ID = isset($_POST['cat_ID'])?$_POST['cat_ID']:null;
+  include_once('im_article_list.php');
 }
 
 add_action('admin_menu', 'issue_manager_manage_page');
 add_action('publish_post', 'issue_manager_publish_intercept');
+
+add_action('wp_ajax_issue_manager_article_list', 'issue_manager_article_list');
 
 
 // Register hooks for activation/deactivation.

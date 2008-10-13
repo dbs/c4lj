@@ -1,11 +1,10 @@
-jQuery(document).ready( function() {
-  jQuery('a.im-publish').click( function() {
-    catID = jQuery(this).parent().parent().attr('id').substring(4);
-    jQuery.get(
-      "<?php ?>",
+jQuery(document).ready( function($) {
+  $('a.im-publish').click( function() {
+    catID = $(this).parent().parent().attr('id').substring(4);
+    $.post(
+      "<?php bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php",
       {
-        page: "manage-issues",
-        action: "list",
+        action: "issue_manager_article_list",
         cat_ID: catID
       },
       function(data) { alert(data); }
