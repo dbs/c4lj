@@ -28,6 +28,7 @@ function issue_manager_admin(  ) {
   // See if we have GET parameters
   $cat_ID = isset($_GET['cat_ID'])?$_GET['cat_ID']:null;
   $action = isset($_GET['action'])?$_GET['action']:null;
+  $post_IDs = isset($_GET['posts'])?$_GET['posts']:null;
     
   if ( $cat_ID ) {
     $cat_ID = (int)$cat_ID;
@@ -36,7 +37,7 @@ function issue_manager_admin(  ) {
         include_once('im_article_list.php');
         break;
       case "publish":
-        issue_manager_publish($cat_ID, $published, $unpublished);
+        if ( $post_IDs ) issue_manager_publish($cat_ID, $post_IDs, $published, $unpublished);
         include_once('im_admin_main.php');
         break;
       case "unpublish":
@@ -66,7 +67,7 @@ function issue_manager_admin(  ) {
   }
 }
 
-function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
+function issue_manager_publish( $cat_ID, $post_IDs, &$published, &$unpublished ) {
   // take the category out of the unpublished list
   $key = array_search( $cat_ID, $unpublished );
   if ( FALSE !== $key ) {
@@ -80,9 +81,11 @@ function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
     update_option( 'im_published_categories', $published );
     
     // get all pending posts in the category
-    $posts = get_posts( "numberposts=-1&post_status=pending&category=$cat_ID" );
+    //$posts = get_posts( "numberposts=-1&post_status=pending&category=$cat_ID" );
     $counter = 0;
-    foreach ( $posts as $post ) {
+    //foreach ( $posts as $post ) {
+    foreach ( explode(',',$post_IDs) as $post_ID ) {
+      $post = get_post( (int)$post_ID );
       // set the date to about now, keeping a minute gap so posts stay in order
       wp_update_post( array(
         'ID' => $post->ID,
