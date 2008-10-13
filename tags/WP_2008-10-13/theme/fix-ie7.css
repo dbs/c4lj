@@ -1,0 +1,11 @@
+div#content {
+	margin: 0;
+}
+
+div#content .entry pre {
+	width: 99%;
+}
+
+div#content .entry pre .dp-highlighter {
+	overflow: auto !important;
+}
