@@ -60,6 +60,8 @@ function issue_manager_admin(  ) {
         include_once('im_admin_main.php');
         break;
     }
+  } else {
+    include_once('im_admin_main.php');
   }
 }
 
