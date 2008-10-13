@@ -1,7 +1,7 @@
 <div class="wrap">
   <h2>Manage Issues</h2>
   
-  <table class="widefat">
+  <table class="widefat im_category_list">
     <thead>
       <tr>
         <th scope="col">Category Name</th>

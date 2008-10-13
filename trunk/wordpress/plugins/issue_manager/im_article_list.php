@@ -5,20 +5,10 @@
 <div class="wrap">
   <h2>Publishing Category: <?php echo $category->cat_name; ?></h2>
   
-  <table class="widefat">
-    <thead>
-      <tr>
-        <th scope="col">Title</th>
-      </tr>
-    </thead>
-    <?php $alt = ' class="alternate"'; ?>
+  <ul class="im_article_list">
     <?php foreach ( $posts as $post ): ?>
-      <?php setup_postdata($post); ?>
-      <tr id="post-<?php the_ID(); ?>"<?php echo $alt; ?>>
-        <td><?php echo $post->post_title; ?></td>
-      </tr>
+      <li id="post-<?php the_ID(); ?>"<?php echo $alt; ?>><?php echo $post->post_title; ?></li>
       <?php $alt = empty( $alt ) ? ' class="alternate"' : ''; ?>
     <?php endforeach; ?>
-  
-  </table>
+  </ul>
 </div>
