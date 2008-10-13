@@ -144,6 +144,9 @@ function issue_manager_deactivation(  ) {
 }
 
 function issue_manager_scripts(  ) {
+  echo '<script type="text/javascript">';
+  echo 'var im_wpurl = ' . bloginfo( 'wpurl' ) . '/wp-admin/admin-ajax.php';
+  echo '</script>';
   wp_enqueue_script( 'im_sort_articles', path_join( WP_PLUGIN_URL, basename( dirname( __FILE__ ) ) . '/im_sort_articles.js' ), array( 'jquery' ) );
 }
 
