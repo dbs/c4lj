@@ -9,7 +9,6 @@
     <thead>
       <tr>
         <th scope="col">Title</th>
-        <th scope="col">Author</th>
       </tr>
     </thead>
     <?php $alt = ' class="alternate"'; ?>
@@ -17,7 +16,6 @@
       <?php setup_postdata($post); ?>
       <tr id="post-<?php the_ID(); ?>"<?php echo $alt; ?>>
         <td><?php echo $post->post_title; ?></td>
-        <td><?php the_author(); ?></td>
       </tr>
       <?php $alt = empty( $alt ) ? ' class="alternate"' : ''; ?>
     <?php endforeach; ?>
