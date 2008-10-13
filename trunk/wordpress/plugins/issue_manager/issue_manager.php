@@ -12,7 +12,7 @@ function issue_manager_manage_page(  ) {
   if ( function_exists('add_management_page') ) {
     $page = add_management_page( 'Manage Issues', 'Issues', 'publish_posts', 'manage-issues', 'issue_manager_admin' );
     add_action("admin_print_scripts-$page", 'issue_manager_script_prereqs');
-    add_action("admin_head-$page", 'issue_manager_scripts');
+    //add_action("admin_head-$page", 'issue_manager_scripts');
   }
 }
 function issue_manager_admin(  ) {
@@ -31,11 +31,16 @@ function issue_manager_admin(  ) {
   if ( $cat_ID ) {
     $cat_ID = (int)$cat_ID;
     switch($action) {
+      case "list":
+        include_once('im_article_list.php');
+        break;
       case "publish":
         issue_manager_publish($cat_ID, $published, $unpublished);
+        include_once('im_admin_main.php');
         break;
       case "unpublish":
         issue_manager_unpublish($cat_ID, $published, $unpublished);
+        include_once('im_admin_main.php');
         break;
       case "ignore":
         // stop tracking the cat_ID
@@ -49,12 +54,13 @@ function issue_manager_admin(  ) {
           array_splice($unpublished, $key, 1);
           update_option( 'im_unpublished_categories', $unpublished );
         }
+        include_once('im_admin_main.php');
         break;
       default:
+        include_once('im_admin_main.php');
         break;
     }
   }
-  include_once('im_admin_main.php');
 }
 
 function issue_manager_publish( $cat_ID, &$published, &$unpublished ) {
@@ -145,7 +151,6 @@ function issue_manager_deactivation(  ) {
 }
 function issue_manager_script_prereqs(  ) {
   wp_enqueue_script( 'jquery' );
-  wp_enqueue_script( 'thickbox' );
 }
 function issue_manager_scripts(  ) {
   echo '<script type="text/javascript">';
@@ -156,13 +161,12 @@ function issue_manager_scripts(  ) {
 function issue_manager_article_list() {
   $cat_ID = isset($_POST['cat_ID'])?$_POST['cat_ID']:null;
   include_once('im_article_list.php');
-  die();
 }
 
 add_action('admin_menu', 'issue_manager_manage_page');
 add_action('publish_post', 'issue_manager_publish_intercept');
 
-add_action('wp_ajax_issue_manager_article_list', 'issue_manager_article_list');
+//add_action('wp_ajax_issue_manager_article_list', 'issue_manager_article_list');
 
 
 // Register hooks for activation/deactivation.
