@@ -15,8 +15,8 @@
     <?php $alt = ' class="alternate"'; ?>
     <?php foreach ( $posts as $post ): ?>
       <?php setup_postdata($post); ?>
-      <tr id="post-<?php echo $post->ID; ?>"<?php echo $alt; ?>>
-        <td><?php echo get_the_title(); ?></td>
+      <tr id="post-<?php the_ID(); ?>"<?php echo $alt; ?>>
+        <td><?php the_title(); ?></td>
         <td><?php the_author(); ?></td>
       </tr>
       <?php $alt = empty( $alt ) ? ' class="alternate"' : ''; ?>
