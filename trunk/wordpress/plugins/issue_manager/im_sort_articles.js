@@ -8,7 +8,6 @@ jQuery(document).ready( function($) {
 });
 
 function im_update_post_order() {
-  jQuery("#im_publish_form").append(jQuery("<p>im_update_post_order</p>"));
   var im_post_IDs = new Array();
   jQuery(".im_article_list li").not(".ui-sortable-helper").each( function() {
     im_post_IDs.push(jQuery(this).attr('id').substring(5));
