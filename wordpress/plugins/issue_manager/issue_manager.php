@@ -145,12 +145,12 @@ function issue_manager_deactivation(  ) {
 }
 function issue_manager_script_prereqs(  ) {
   wp_enqueue_script( 'jquery' );
+  wp_enqueue_script( 'thickbox' );
 }
 function issue_manager_scripts(  ) {
   echo '<script type="text/javascript">';
   include_once('im_sort_articles.js.php');
   echo '</script>';
-  wp_enqueue_script( 'thickbox' );
 }
 
 function issue_manager_article_list() {
