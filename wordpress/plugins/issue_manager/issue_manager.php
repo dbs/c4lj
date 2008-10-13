@@ -144,15 +144,18 @@ function issue_manager_deactivation(  ) {
 }
 
 function issue_manager_scripts(  ) {
+  /* Make WordPress's URL available to JavaScript */
   echo '<script type="text/javascript">';
   echo 'var im_wpurl = "' . get_bloginfo( 'wpurl' ) . '";';
   echo '</script>';
+  
   wp_enqueue_script( 'im_sort_articles', path_join( WP_PLUGIN_URL, basename( dirname( __FILE__ ) ) . '/im_sort_articles.js' ), array( 'jquery' ) );
 }
 
 function issue_manager_article_list() {
   $cat_ID = isset($_POST['cat_ID'])?$_POST['cat_ID']:null;
   include_once('im_article_list.php');
+  die();
 }
 
 add_action('admin_menu', 'issue_manager_manage_page');
