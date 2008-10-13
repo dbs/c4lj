@@ -85,7 +85,8 @@ function issue_manager_publish( $cat_ID, $post_IDs, &$published, &$unpublished )
     $counter = 0;
     //foreach ( $posts as $post ) {
     foreach ( explode(',',$post_IDs) as $post_ID ) {
-      $post = get_post( (int)$post_ID );
+      $post_ID = (int)$post_ID;
+      $post = get_post( $post_ID );
       // set the date to about now, keeping a minute gap so posts stay in order
       wp_update_post( array(
         'ID' => $post->ID,
