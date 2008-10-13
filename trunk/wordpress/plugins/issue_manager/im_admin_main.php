@@ -25,15 +25,15 @@
         <td><strong><a title='Edit the status of "<?php echo $cat->cat_name; ?>"' href="?action=edit&cat_ID=<?php echo $cat->cat_ID; ?>"><?php echo $cat->cat_name; ?></a></strong></td>
         <td><?php
           if ( "published" == $status ) { echo "<strong>Published</strong>"; }
-          else { echo "<a class='im-publish' href='?page=manage-issues&action=publish&cat_ID=$cat->cat_ID'>Publish</a>"; }
+          else { echo "<a class='im-publish thickbox' href='#TB_inline?height=400&amp;width=600&amp;inlineId=im_article_list&amp;modal=true'>Publish</a>"; }
         ?></td>
         <td><?php
           if ( "unpublished" == $status ) { echo "<strong>Unpublished</strong>"; }
-          else { echo "<a class='im-unpublish' href='?page=manage-issues&action=unpublish&cat_ID=$cat->cat_ID'>Unpublish</a>"; }
+          else { echo "<a class='im-unpublish' href='?page=manage-issues&amp;action=unpublish&amp;cat_ID=$cat->cat_ID'>Unpublish</a>"; }
         ?></td>
         <td><?php
           if ( "ignored" == $status ) { echo "<strong>Ignored</strong>"; }
-          else { echo "<a class='im-ignore' href='?page=manage-issues&action=ignore&cat_ID=$cat->cat_ID'>Ignore</a>"; }
+          else { echo "<a class='im-ignore' href='?page=manage-issues&amp;action=ignore&amp;cat_ID=$cat->cat_ID'>Ignore</a>"; }
         ?></td>
       </tr>
       <?php $alt = empty( $alt ) ? ' class="alternate"' : ''; ?>
