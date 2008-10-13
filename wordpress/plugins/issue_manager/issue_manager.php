@@ -10,7 +10,8 @@ Author URI: http://xplus3.net/
   
 function issue_manager_manage_page(  ) {
   if ( function_exists('add_management_page') ) {
-    add_management_page( 'Manage Issues', 'Issues', 'publish_posts', 'manage-issues', 'issue_manager_admin' );
+    $page = add_management_page( 'Manage Issues', 'Issues', 'publish_posts', 'manage-issues', 'issue_manager_admin' );
+    add_action("admin_print_scripts-$page", 'issue_manager_scripts');
   }
 }
 function issue_manager_admin(  ) {
@@ -142,8 +143,14 @@ function issue_manager_deactivation(  ) {
   delete_option( 'im_unpublished_categories' );
 }
 
+function issue_manager_scripts(  ) {
+  wp_enqueue_script( 'im_sort_articles', path_join( WP_PLUGIN_DIR, basename( dirname( __FILE__ ) ) . '/im_sort_articles.js' ), array( 'jquery' ) );
+  
+}
+
 add_action('admin_menu', 'issue_manager_manage_page');
 add_action('publish_post', 'issue_manager_publish_intercept');
+
 
 // Register hooks for activation/deactivation.
 register_activation_hook( __FILE__, 'issue_manager_activation' );
