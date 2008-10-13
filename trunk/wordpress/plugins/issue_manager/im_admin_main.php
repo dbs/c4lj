@@ -25,7 +25,7 @@
         <td><strong><a title='Edit the status of "<?php echo $cat->cat_name; ?>"' href="?action=edit&cat_ID=<?php echo $cat->cat_ID; ?>"><?php echo $cat->cat_name; ?></a></strong></td>
         <td><?php
           if ( "published" == $status ) { echo "<strong>Published</strong>"; }
-          else { echo "<a class='im-publish thickbox' href='#TB_inline?height=400&amp;width=600&amp;inlineId=im_article_list&amp;modal=true'>Publish</a>"; }
+          else { echo "<a class='im-publish thickbox' href='#TB_inline?height=400&amp;width=600&amp;inlineId=footer&amp;modal=true'>Publish</a>"; }
         ?></td>
         <td><?php
           if ( "unpublished" == $status ) { echo "<strong>Unpublished</strong>"; }
