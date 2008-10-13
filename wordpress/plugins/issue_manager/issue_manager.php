@@ -156,7 +156,7 @@ function issue_manager_script_prereqs(  ) {
   wp_enqueue_script( 'jquery' );
 }
 function issue_manager_scripts(  ) {
-  wp_enqueue_script( "im_sort_articles", WP_PLUGIN_URL.basename( dirname( __FILE__ ) )."/im_sort_articles.js", array( 'jquery' ) );
+  wp_enqueue_script( "im_sort_articles", path_join(WP_PLUGIN_URL, basename( dirname( __FILE__ ) )."/im_sort_articles.js"), array( 'jquery' ) );
 }
 
 function issue_manager_article_list() {
