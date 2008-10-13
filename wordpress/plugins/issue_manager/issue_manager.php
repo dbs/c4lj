@@ -156,6 +156,7 @@ function issue_manager_script_prereqs(  ) {
   wp_enqueue_script( 'jquery' );
 }
 function issue_manager_scripts(  ) {
+  wp_enqueue_script( "jquery-ui-sortable", path_join(WP_PLUGIN_URL, basename( dirname( __FILE__ ) )."/jquery-ui-sortable-1.5.2.js"), array( 'jquery' ), '1.5.2' );
   wp_enqueue_script( "im_sort_articles", path_join(WP_PLUGIN_URL, basename( dirname( __FILE__ ) )."/im_sort_articles.js"), array( 'jquery' ) );
 }
 
