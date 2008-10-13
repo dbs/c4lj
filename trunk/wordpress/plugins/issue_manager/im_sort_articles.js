@@ -1,7 +1,7 @@
 jQuery(document).ready( function($) {
   im_update_post_order();
   $(".im_article_list").sortable({
-    update: im_update_post_order
+    stop: im_update_post_order
   });
   
 });
