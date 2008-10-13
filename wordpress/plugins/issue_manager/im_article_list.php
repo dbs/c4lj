@@ -7,7 +7,7 @@
   
   <ul class="im_article_list">
     <?php foreach ( $posts as $post ): ?>
-      <li id="post-<?php the_ID(); ?>"<?php echo $alt; ?>><?php echo $post->post_title; ?></li>
+      <li id="post-<?php $post->ID; ?>"<?php echo $alt; ?>><?php echo $post->post_title; ?></li>
       <?php $alt = empty( $alt ) ? ' class="alternate"' : ''; ?>
     <?php endforeach; ?>
   </ul>
