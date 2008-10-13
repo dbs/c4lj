@@ -144,6 +144,8 @@ function issue_manager_deactivation(  ) {
 }
 
 function issue_manager_scripts(  ) {
+  wp_enqueue_script( 'jquery' );
+  include_once('im_sort_articles.js.php');
   /* Make WordPress's URL available to JavaScript */
   echo '<script type="text/javascript">';
   echo 'var im_wpurl = "' . get_bloginfo( 'wpurl' ) . '";';
