@@ -30,6 +30,9 @@ function issue_manager_admin(  ) {
   if ( $cat_ID ) {
     $cat_ID = (int)$cat_ID;
     switch($action) {
+      case "list":
+        include_once('im_article_list.php');
+        die;
       case "publish":
         issue_manager_publish($cat_ID, $published, $unpublished);
         break;
