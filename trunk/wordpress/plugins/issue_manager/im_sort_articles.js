@@ -1,6 +1,7 @@
 jQuery(document).ready( function($) {
   im_update_post_order();
   $(".im_article_list").sortable({
+    axis: "y",
     stop: im_update_post_order
   });
   
