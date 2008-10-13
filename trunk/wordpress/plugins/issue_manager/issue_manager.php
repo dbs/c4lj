@@ -145,13 +145,9 @@ function issue_manager_deactivation(  ) {
 
 function issue_manager_scripts(  ) {
   wp_enqueue_script( 'jquery' );
-  include_once('im_sort_articles.js.php');
-  /* Make WordPress's URL available to JavaScript */
   echo '<script type="text/javascript">';
-  echo 'var im_wpurl = "' . get_bloginfo( 'wpurl' ) . '";';
+  include_once('im_sort_articles.js.php');
   echo '</script>';
-  
-  wp_enqueue_script( 'im_sort_articles', path_join( WP_PLUGIN_URL, basename( dirname( __FILE__ ) ) . '/im_sort_articles.js' ), array( 'jquery' ) );
 }
 
 function issue_manager_article_list() {
