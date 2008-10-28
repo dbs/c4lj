@@ -17,7 +17,7 @@ function issue_manager_manage_page(  ) {
 function issue_manager_admin(  ) {
   $published = get_option( 'im_published_categories' );
   $unpublished = get_option( 'im_unpublished_categories' );
-  $categories = get_categories( 'orderby=name&hierarchical=0&hide_empty=0' );
+  $categories = get_categories( 'orderby=name&hierarchical=0&hide_empty=0&exclude=1' );
   
   // Make sure the options exist
   if ( $published === FALSE ) { $published = array(); update_option( 'im_published_categories', $published ); }
@@ -26,7 +26,6 @@ function issue_manager_admin(  ) {
   // See if we have GET parameters
   $cat_ID = isset($_GET['cat_ID'])?$_GET['cat_ID']:null;
   $action = isset($_GET['action'])?$_GET['action']:null;
-  $post_IDs = isset($_GET['posts'])?$_GET['posts']:null;
     
   if ( $cat_ID ) {
     $cat_ID = (int)$cat_ID;
@@ -35,7 +34,13 @@ function issue_manager_admin(  ) {
         include_once('im_article_list.php');
         break;
       case "publish":
-        if ( $post_IDs ) issue_manager_publish($cat_ID, $post_IDs, $published, $unpublished);
+        $post_IDs = isset($_GET['posts'])?$_GET['posts']:null;
+        $pub_time['mm'] = isset($_GET['mm'])?$_GET['mm']:null;
+        $pub_time['jj'] = isset($_GET['jj'])?$_GET['jj']:null;
+        $pub_time['aa'] = isset($_GET['aa'])?$_GET['aa']:null;
+        $pub_time['hh'] = isset($_GET['hh'])?$_GET['hh']:null;
+        $pub_time['mn'] = isset($_GET['mn'])?$_GET['mn']:null;
+        if ( $post_IDs ) issue_manager_publish($cat_ID, $post_IDs, $pub_time, $published, $unpublished);
         include_once('im_admin_main.php');
         break;
       case "unpublish":
@@ -65,7 +70,7 @@ function issue_manager_admin(  ) {
   }
 }
 
-function issue_manager_publish( $cat_ID, $post_IDs, &$published, &$unpublished ) {
+function issue_manager_publish( $cat_ID, $post_IDs, $pub_time, &$published, &$unpublished ) {
   // take the category out of the unpublished list
   $key = array_search( $cat_ID, $unpublished );
   if ( FALSE !== $key ) {
@@ -78,6 +83,13 @@ function issue_manager_publish( $cat_ID, $post_IDs, &$published, &$unpublished )
     sort($published);
     update_option( 'im_published_categories', $published );
     
+    // see if we have a valid publication date/time
+    $publish_at = strtotime( $pub_time['aa'].'-'.$pub_time['mm'].'-'.$pub_time['jj'].' '.$pub_time['hh'].':'.$pub_time['mn'] );
+    
+    if ( !$publish_at ) {
+      $publish_at = strtotime(current_time('mysql'));
+    }
+    
     // $post_IDs should have all pending posts' IDs in the category
     $counter = 0;
     foreach ( explode(',',$post_IDs) as $post_ID ) {
@@ -86,7 +98,7 @@ function issue_manager_publish( $cat_ID, $post_IDs, &$published, &$unpublished )
       // set the date to about now, keeping a minute gap so posts stay in order
       wp_update_post( array(
         'ID' => $post->ID,
-        'post_date' => date( 'Y-m-d H:i:s', strtotime(current_time('mysql'))-($counter*60) )
+        'post_date' => date( 'Y-m-d H:i:s', $publish_at-($counter) )
       ) );
       // let WP work its magic to publish the post
       wp_publish_post($post->ID);
