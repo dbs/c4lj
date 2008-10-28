@@ -2,8 +2,8 @@
 Contributors: jbrinley
 Tags: admin, management, publish, magazine, journal, periodical
 Requires at least: 2.5
-Tested up to: 2.6.2
-Stable tag: 1.2.0
+Tested up to: 2.6.3
+Stable tag: 1.3.0
 
 == Description ==
 
@@ -22,4 +22,4 @@ All categories start out "Ignored", meaning the plugin has nothing to do with th
 
 A category can be set to "Unpublished", changing any published posts in that category to pending status. Any attempt to publish a post with that category will set its status to pending.
 
-A category can be published, which will set the status of any pending posts in that category to published. Those posts have their timestamps adjusted to approximately the current time, with a one minute space between each post.
+A category can be published, which will set the status of any pending posts in that category to published. Those posts have their timestamps adjusted to the time selected, with a one second space between each post.
