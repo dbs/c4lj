@@ -3,7 +3,7 @@
 Plugin Name: DOAJ Export
 Version: 1.0
 Description: Provides information about your posts formatted according to the DOAJ Article XML Schema
-Plugin URI: http://code.google.com/p/c4lj/
+Plugin URI: http://xplus3.net/
 Author: Jonathan Brinley
 Author URI: http://xplus3.net/
 Contributor: Eric Lease Morgan

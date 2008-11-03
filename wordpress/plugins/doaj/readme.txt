@@ -11,6 +11,11 @@ Adds a feed for exporting your data using the DOAJ article XML schema.
 
 This plugin adds a feed to your site that uses the [DOAJ article XML schema](http://www.doaj.org/doaj?func=loadTempl&templ=070509). The XML file it creates would be suitable for uploading to the [Directory of Open Access Journals](http://www.doaj.org/).
 
+= Known Problems =
+
+1. The language code cannot be changed from "eng".
+1. Does not play well with the FeedBurner FeedSmith plugin (which redirects you to your FeedBurner feed, so you never see the DOAJ XML output).
+
 == Installation ==
 1. Unzip and copy the files to your plugins directory.
 1. Activate the plugin.
@@ -29,6 +34,10 @@ If mod_rewrite is enabled on your site (_i.e._, you have pretty URLs), you can a
     http://example.com/feed/doaj
     http://example.com/tags/foo/feed/doaj
     http://example.com/feed/doaj?s=bar
+    
+= Where do the volume/issue numbers come from? =
+
+The plugin assumes you have a category for each issue named "Issue #", where # is the number of the issue. The issue categories should be child categories of either an "Issues" category or of a "Volume #" category. If the former, the output won't include a volume number. If the latter, the volume number will come from the volume's category name.
 
 = My site is not in English. How do I change the language code? =
 
