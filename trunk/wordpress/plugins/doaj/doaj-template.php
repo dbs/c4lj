@@ -39,14 +39,14 @@ echo '<?xml version="1.0" encoding="UTF-8"?>'."\n"; ?>
     <?php endif; ?>
     <publisherRecordId><?php the_ID(); ?></publisherRecordId>
     <documentType>article</documentType>
-    <title language="eng<?php /*bloginfo('language');*/ ?>"><?php the_title(); ?></title>
+    <title language="eng<?php /*bloginfo('language');*/ ?>"><?php the_title_rss(); ?></title>
 
     <authors>
       <author>
         <name><?php the_author(); ?></name>
       </author>
     </authors>
-    <abstract language="eng<?php /*bloginfo('language');*/ ?>"><?php the_excerpt(); ?></abstract>
+    <abstract language="eng<?php /*bloginfo('language');*/ ?>"><?php the_excerpt_rss(); ?></abstract>
 
     <fullTextUrl format="html"><?php the_permalink(); ?></fullTextUrl>
     <?php $tags = get_the_tags();
