@@ -20,20 +20,25 @@ function doaj_options_page(  ) {
   include_once('doaj-options.php');
 }
 
-function doaj_export_activate(  ) {
-  if ( isset( $_GET['doaj_export'] ) && $_GET['doaj_export'] == 1 ) {
-    add_action( 'wp', 'doaj_export' );
-  }
+function doaj_add_feed(  ) {
+  global $wp_rewrite;
+  add_feed('doaj', 'doaj_export');
+  add_action('generate_rewrite_rules', 'doaj_rewrite_rules');
+  $wp_rewrite->flush_rules();
+}
+
+function doaj_rewrite_rules( $wp_rewrite ) {
+  $new_rules = array(
+    'feed/(.+)' => 'index.php?feed='.$wp_rewrite->preg_index(1)
+  );
+  $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
 }
 
 function doaj_export(  ) {
-  if ( have_posts() ) {
-    include_once('doaj-template.php');
-  }
-  die();
+  include_once('doaj-template.php');
 }
 
 
 add_action('admin_menu', 'doaj_add_options_page');
-add_action('init', 'doaj_export_activate');
+add_action('init', 'doaj_add_feed');
 ?>
