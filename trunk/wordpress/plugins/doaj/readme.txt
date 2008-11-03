@@ -3,7 +3,7 @@ Contributors: jbrinley, emorgan
 Tags: doaj, open-access, metadata, xml, journal, periodical, OAI, OAI-PMH
 Requires at least: 2.3
 Tested up to: 2.6
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 Adds a feed for exporting your data using the DOAJ article XML schema.
 
