@@ -3,7 +3,7 @@
 Plugin Name: Issue Manager
 Plugin URI: http://xplus3.net/2008/09/26/issue-manager/
 Description: Allows an editor to publish an "issue", which is to say, all pending posts with a given category. Until a category is published, all posts with that category will remain in the pending state.
-Version: 1.4.0
+Version: 1.4.1
 Author: Jonathan Brinley
 Author URI: http://xplus3.net/
 */
