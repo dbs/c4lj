@@ -3,14 +3,14 @@
 Plugin Name: Issue Manager
 Plugin URI: http://xplus3.net/2008/09/26/issue-manager/
 Description: Allows an editor to publish an "issue", which is to say, all pending posts with a given category. Until a category is published, all posts with that category will remain in the pending state.
-Version: 1.2.0
+Version: 1.4.0
 Author: Jonathan Brinley
 Author URI: http://xplus3.net/
 */
   
 function issue_manager_manage_page(  ) {
-  if ( function_exists('add_management_page') ) {
-    $page = add_management_page( 'Manage Issues', 'Issues', 'publish_posts', 'manage-issues', 'issue_manager_admin' );
+  if ( function_exists('add_submenu_page') ) {
+    $page = add_submenu_page( 'edit.php', 'Manage Issues', 'Issues', 'publish_posts', 'manage-issues', 'issue_manager_admin' );
     add_action("admin_print_scripts-$page", 'issue_manager_scripts');
   }
 }
