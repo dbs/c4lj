@@ -3,7 +3,7 @@ Contributors: jbrinley
 Tags: admin, management, publish, magazine, journal, periodical
 Requires at least: 2.7
 Tested up to: 2.7
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 
 == Description ==
 
