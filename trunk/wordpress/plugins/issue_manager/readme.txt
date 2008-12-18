@@ -18,7 +18,7 @@ This plugin is installed just like any other WordPress plugin. More [detailed in
 1. Download
 1. Unzip into to `/wp-contents/plugins/`
 1. Activate the plugin
-1. Access the controls (*Manage->Issues*)
+1. Access the controls (*Posts->Issues*)
 
 All categories start out "Ignored", meaning the plugin has nothing to do with them.
 
