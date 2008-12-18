@@ -1,13 +1,15 @@
 === Issue Manager ===
 Contributors: jbrinley
 Tags: admin, management, publish, magazine, journal, periodical
-Requires at least: 2.5
-Tested up to: 2.6.3
-Stable tag: 1.3.0
+Requires at least: 2.7
+Tested up to: 2.7
+Stable tag: 1.4.0
 
 == Description ==
 
 Allows an editor to publish an "issue", which is to say, all pending posts with a given category, all at once. Until a category is published, all posts with that category will remain in the pending state.
+
+Note: The current version works with version 2.7.x. If you are using WordPress version 2.6.x, use an older version of this plugins (1.3.x is recommended).
 
 == Installation ==
 
