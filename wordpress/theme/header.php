@@ -26,7 +26,7 @@
 		<div id="page">
 			<div id="header">
 				<div id="headerbackground">
-					<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
+					<h1><a href="<?php echo get_option('home'); ?>/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo.png" alt="<?php bloginfo('name'); ?>" /></a></h1>
 					<h2 id="issn">ISSN 1940-5758</h2>
 				</div>
 			</div>
