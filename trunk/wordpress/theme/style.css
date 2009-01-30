@@ -34,12 +34,12 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	margin: 1em;
-	background-color: #FDFAFA;
+	background-color: #FFFFFF;
 }
 
 a:link, a:visited {
 	text-decoration: none;
-	color: #803030;
+	color: #5E9CAE;
 }
 
 a:link:hover, a:visited:hover {
@@ -74,8 +74,8 @@ table {
 
 #header h1 {
 	font-size: 250%;
-	margin: .4em 0 -.4em;
-	color: #803030;
+	margin: 0.4em 0;
+	color: #5E9CAE;
 }
 #header h1 a {
   position: relative;
@@ -88,7 +88,7 @@ table {
 
 #header h2 {
 	font-size: 100%;
-	margin: 1em 0 0.5em 0.6em;
+	margin: 1em 0 0.5em;
 }
 
 /* SIDEBARS ***************************************/
@@ -134,7 +134,7 @@ table {
   text-decoration: underline;
 }
 #about a:hover {
-  color: #803030;
+  color: #5E9CAE;
 }*/
 
 #about ul {
@@ -161,7 +161,7 @@ table {
 
 #searchform #searchsubmit {
 	background-color: #ffffff;
-	color: #803030;
+	color: #5E9CAE;
 	font-size: 1.25em;
 	font-weight: bold;
 }
@@ -187,10 +187,10 @@ table {
 #content h1 {
 	margin: 0.25em 0 .1em;
   padding-top: 0.5em;
-  border-top: 3px solid #803030;
+  border-top: 3px solid #5E9CAE;
 	font-size: 200%;
 	font-weight: bold;
-  color: #803030;
+  color: #5E9CAE;
 }
 
 #content h2 {
@@ -366,7 +366,7 @@ table {
 
 #content.listpage h1.pagetitle {
   margin-top: -0.75em;
-  border-bottom: 3px solid #803030;
+  border-bottom: 3px solid #5E9CAE;
   border-top: 0px solid transparent;
 }
 
@@ -447,7 +447,7 @@ ol.commentlist li.oddcomment .commentbody {
 #footer p#copyright {
 	text-align: right;
   padding-top: 7px;
-	border-top: 3px solid #803030;
+	border-top: 3px solid #5E9CAE;
 }
 
 /* Syntax Highlighter *******************/
