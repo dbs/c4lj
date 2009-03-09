@@ -36,10 +36,20 @@ body {
 	margin: 1em;
 	background-color: #FFFFFF;
 }
+h1, h2, h3, h4, h5, h6 {
+  font-family: Tunga, Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  color: #522D24;
+  line-height: 1;
+}
 
 a:link, a:visited {
 	text-decoration: none;
 	color: #522D24;
+}
+
+a:visited {
+  color: #522D24;
 }
 
 a:link:hover, a:visited:hover {
@@ -93,7 +103,7 @@ table {
   text-align: right;
   position: relative;
   right: 0;
-  top: 1em;
+  top: 1.25em;
   color: #522D24;
   font-weight: normal;
 }
@@ -309,6 +319,16 @@ table {
 	font-style: normal;
 }
 
+#content .abstract a:link, #content .entry a:link {
+  color: #2F6E7F;
+}
+#content .abstract a:visited, #content .entry a:visited {
+  color: #5E9CAE;
+}
+#meta a:link, #meta a:visited {
+  color: #2F6E7F;
+}
+
 #content .article .entry {
 	margin-bottom: 3em;
 }
@@ -376,12 +396,15 @@ table {
   border-bottom: 3px solid #522D24;
   border-top: 0px solid transparent;
   padding-top: 0;
-  margin-top: -0.85em;
+  margin-top: -0.5em;
+  position: relative;
+  z-index: 200;
 }
 
 #content.listpage .article .articletitle {
 	padding-top: 1em;
 	margin:0;
+  font-size: 135%;
 }
 #content.listpage .article .abstract {
 	font-style: normal;
@@ -467,4 +490,8 @@ ol.commentlist li.oddcomment .commentbody {
 .geshi li {
   margin-top: 0 !important;
   line-height: 1 !important;
+}
+
+.caption {
+  text-align: center;
 }

@@ -9,3 +9,7 @@ div#content .entry pre {
 div#content .entry pre .dp-highlighter {
 	overflow: auto !important;
 }
+
+#content.listpage h1.pagetitle {
+  margin-top: 0;
+}
