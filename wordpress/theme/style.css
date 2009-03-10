@@ -37,8 +37,6 @@ body {
 	background-color: #FFFFFF;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: Tunga, Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
   color: #522D24;
   line-height: 1;
 }
