@@ -374,6 +374,9 @@ table {
 	padding: 0.25em;
   border: 1px solid #000000;
 }
+#content .entry .no-border th, #content .entry .no-border td {
+  border: none;
+}
 #content .entry th {
   background-color: #D3D3D3;
 }
