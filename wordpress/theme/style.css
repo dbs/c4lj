@@ -36,7 +36,7 @@ body {
 	margin: 1em;
 	background-color: #FFFFFF;
 }
-h1, h2, h3, h4, h5, h6 {
+h1 {
   color: #522D24;
   line-height: 1;
 }
@@ -214,26 +214,23 @@ table {
 }
 
 #content h3 {
-	font-size: 100%;
+	font-size: 125%;
 	font-weight: bold;
 }
 
 #content h4 {
 	font-size: 100%;
-	font-weight: normal;
-	text-decoration: underline;
+	font-weight: bold;
 }
 
 #content h5 {
 	font-size: 90%;
-	font-weight: normal;
-	text-decoration: underline;
+	font-weight: bold;
 }
 
 #content h6 {
 	font-size: 80%;
-	font-weight: normal;
-	text-decoration: underline;
+	font-weight: bold;
 }
 
 #content img {
