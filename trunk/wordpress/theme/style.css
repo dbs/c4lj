@@ -510,3 +510,28 @@ ol.commentlist li.oddcomment .commentbody {
 .caption {
   text-align: center;
 }
+
+/* Archives */
+#content.listpage .issue .issuetitle {
+  border-bottom: 3px solid #522D24;
+}
+#content.listpage .issue .issuetitle a:link, #content.listpage .issue .issuetitle a:visited {
+  color: #522D24;
+}
+#content.listpage .issue .issuetitle a:hover {
+  text-decoration: none;
+}
+#content.listpage .issue .titlelist {
+  list-style-type: none;
+}
+#content.listpage .issue .titlelist .articletitle {
+  margin: 0;
+  font-size: 100%;
+}
+#content.listpage .issue .titlelist .articletitle a {
+  color: #522D24;
+}
+#content.listpage .issue .titlelist .author {
+  font-weight: normal;
+  margin: 0 0 0 2em;
+}
