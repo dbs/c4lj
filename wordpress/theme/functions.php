@@ -33,7 +33,7 @@ function c4lj_recent_issues() {
   $count = 0;
   $out = '';
   foreach ( $categories as $cat ) {
-    if ( $count < 7 ) {
+    if ( $count < 5 ) {
       if ( in_array( $cat->cat_ID, $published ) ) {
         if ( $count > 0 ) {
           $out .= '<li><a href="'.get_category_link($cat->cat_ID).'">'.$cat->cat_name.', '.$cat->category_description.'</a></li>';

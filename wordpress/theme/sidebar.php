@@ -14,6 +14,7 @@
 					<h2>Previous Issues</h2>
 						<ul>
               <?php echo c4lj_recent_issues(); ?>
+              <li><a href="/issues">Older Issues</a></li>
 						</ul>
 				</div>
 				<div id="about">
