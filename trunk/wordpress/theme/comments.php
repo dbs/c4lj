@@ -19,7 +19,7 @@
 <!-- You can start editing here. -->
 
 <div class="comments">
-	<p class="subscriptionlinks">Subscribe to comments: <?php comments_rss_link('For this article'); ?> | <a href="<?php bloginfo('comments_rss2_url'); ?>">For all articles</a></p>
+	<p class="subscriptionlinks">Subscribe to comments: <?php comments_rss_link('For this article'); ?> | <a href="http://feeds.feedburner.com/c4lj/comments">For all articles</a></p>
 <?php if ($comments) : ?>
 	<h3><?php comments_number('No Responses', 'One Response', '% Responses' );?> to "<?php the_title(); ?>"</h3>
 	

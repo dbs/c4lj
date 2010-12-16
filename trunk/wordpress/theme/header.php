@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/fix-ie6.css" type="text/css" media="screen" />
 		<![endif]-->
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/print.css" type="text/css" media="print" />
-		<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Syndication Feed" href="<?php bloginfo('rss2_url'); ?>" />
+		<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Syndication Feed" href="http://feeds.feedburner.com/c4lj" />
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 
